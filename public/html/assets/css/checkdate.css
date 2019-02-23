@@ -1,0 +1,81 @@
+#d1:checked ~ label[for="d1"],
+#d2:checked ~ label[for="d2"],
+#d3:checked ~ label[for="d3"],
+#d4:checked ~ label[for="d4"],
+#d5:checked ~ label[for="d5"],
+#d6:checked ~ label[for="d6"],
+#d7:checked ~ label[for="d7"],
+#d8:checked ~ label[for="d8"],
+#d9:checked ~ label[for="d9"],
+#d10:checked ~ label[for="d10"],
+#d11:checked ~ label[for="d11"],
+#d12:checked ~ label[for="d12"],
+#d13:checked ~ label[for="d13"],
+#d14:checked ~ label[for="d14"],
+#d15:checked ~ label[for="d15"],
+#d16:checked ~ label[for="d16"],
+#d17:checked ~ label[for="d17"],
+#d18:checked ~ label[for="d18"],
+#d19:checked ~ label[for="d19"],
+#d20:checked ~ label[for="d20"],
+#d21:checked ~ label[for="d21"],
+#d22:checked ~ label[for="d22"],
+#d23:checked ~ label[for="d23"],
+#d24:checked ~ label[for="d24"],
+#d25:checked ~ label[for="d25"],
+#d26:checked ~ label[for="d26"],
+#d27:checked ~ label[for="d27"],
+#d28:checked ~ label[for="d28"],
+#d29:checked ~ label[for="d29"],
+#d30:checked ~ label[for="d30"],
+#d31:checked ~ label[for="d31"] {
+  background: #00ff00;
+  color: #fff;
+}
+#n1:checked ~ label[for="n1"],
+#n2:checked ~ label[for="n2"],
+#n3:checked ~ label[for="n3"],
+#n4:checked ~ label[for="n4"],
+#n5:checked ~ label[for="n5"],
+#n6:checked ~ label[for="n6"],
+#n7:checked ~ label[for="n7"],
+#n8:checked ~ label[for="n8"],
+#n9:checked ~ label[for="n9"],
+#n10:checked ~ label[for="n10"],
+#n11:checked ~ label[for="n11"],
+#n12:checked ~ label[for="n12"],
+#n13:checked ~ label[for="n13"],
+#n14:checked ~ label[for="n14"],
+#n15:checked ~ label[for="n15"],
+#n16:checked ~ label[for="n16"],
+#n17:checked ~ label[for="n17"],
+#n18:checked ~ label[for="n18"],
+#n19:checked ~ label[for="n19"],
+#n20:checked ~ label[for="n20"],
+#n21:checked ~ label[for="n21"],
+#n22:checked ~ label[for="n22"],
+#n23:checked ~ label[for="n23"],
+#n24:checked ~ label[for="n24"],
+#n25:checked ~ label[for="n25"],
+#n26:checked ~ label[for="n26"],
+#n27:checked ~ label[for="n27"],
+#n28:checked ~ label[for="n28"],
+#n29:checked ~ label[for="n29"],
+#n30:checked ~ label[for="n30"],
+#n31:checked ~ label[for="n31"] {
+  background: red;
+  color: #fff;
+}
+.select-size  input,.select-s  input{
+  display: none;
+}
+
+.select-size label ,.select-s label {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid red;
+  line-height: 30px;
+  cursor: pointer
+}
