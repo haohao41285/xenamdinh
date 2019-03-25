@@ -1,14 +1,13 @@
 <?php
 
 Route::get('/','PageController@index')->name('frontend.index');
-//take pages
-Route::get('/{theme}', 'PageController@show')->name('frontend.show');
-//detail news
-Route::get('detail/{slug}','NewsController@detail')->name('frontend.detail.news');
-// Search cars
+
 Route::post('search/{slug}','PageController@search')->name('frontend.xe.search');
 //contact
 Route::post('contact','PageController@contact')->name('frontend.contact');
+
+
+Route::get('detail','TransportController@detail')->name('frontend.transport.detail');
 
 
 //News_customer//detail works
@@ -19,23 +18,6 @@ Route::group(['middleware' => 'auth:customer'], function() {
     Route::get('{id}/delete','WorkController@delete')->name('frontend.work.delete');
     Route::post('post/news','NewsController@postNews')->name('frontend.post.news');
     Route::get('delete/news/{id}','NewsController@delete')->name('frontend.news.delete');
-});
-
-//cart
-Route::group(['prefix' => 'ticket'], function() {
-
-    Route::post('/add','CartController@add')->name('frontend.ticket.add');
-
-    Route::get('/checkout','CartController@getCart')->name('frontend.ticket');
-
-    Route::post('/update','CartController@update')->name('frontend.ticket.update');
-
-    Route::post('/book','CartController@book')->name('frontend.ticket.book');
-
-    Route::post('/remove','CartController@remove')->name('frontend.ticket.remove');
-
-    Route::get('/destroy','CartController@destroy')->name('frontend.ticket.destroy');
-    
 });
 
 

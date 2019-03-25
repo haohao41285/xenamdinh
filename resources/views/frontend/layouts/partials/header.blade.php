@@ -1,56 +1,45 @@
-<header>
-      <div class="container">
-        <div class="header">
-          <div class="row align-items-center">
-            <div class="col-lg-4"><a class="logo" href="{{route('frontend.index')}}"><img src="{!!asset('html/images/logo.svg')!!}" alt="Logo"></a><a class="header__toggle" href="#"><span></span><span></span><span></span><span></span></a></div>
-            <div class="col-lg-4">
-              <div class="wrapMenu">
-                <div class="menuMain">
-                  <ul class="nav-menu">
-                    {!! \App\Models\MenuItem::createMenu() !!}
-                  </ul>
-                </div>
-              </div>
-            </div>
-            @auth('customer')
-                <div class="col-lg-4">
-                    <div class="header__login">
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span style="background-image: url({{ asset('/images/icon-user.png') }})"> <span>  {{ str_limit($composer_customer->customer_info->first_name, 9) ?? $composer_customer->customer_info->first_name }}</span></span>
-                            </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#" onclick="displayModal('inforModal') "> 
-                                <span style="background-image: url({{ asset('html/images/icon-edit.png') }})"></span>
-                                <span>Thêm Xe</span>
-                            </a>
-                            <a class="dropdown-item" href="{{ route('frontend.customer.infor',$composer_customer->id) }}"> 
-                                <span style="background-image: url({{ asset('html/images/icon-house.png') }})"></span>
-                                <span>Tin của bạn</span>
-                            </a>
-                            <a class="dropdown-item" href=" {{ route('frontend.logout') }} "> 
-                                <span style="background-image: url({{ asset('html/images/icon-logout.png') }})"></span>
-                                <span>Logout</span>
-                            </a>
+<!-- banner -->
+    <div class="banner" style="background:url(../images/banner_car.jpg) no-repeat 0px 0px;background-size: 100%">
+        <div class="banner-info">
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                        <div class="logo">
+                            <a class="navbar-brand" href="index.html"><span>T</span> Trendy Blog</a>
                         </div>
-                        </div>
-                        <a href="{{ route('frontend.ticket') }}" style="margin-left: 22px"><span class=" icon_cart_alt "></span> Giỏ Vé <sup style="color: red;" class="count_ticket">({{ (\Cart::count())?\Cart::count():"0" }})</sup>  </a>
-                        
                     </div>
-                </div>
-            @else
-            <div class="col-lg-4">
-              <div class="header__login">
-                <div class="signInOut">
-                  <a href="#" data-toggle="modal" onclick="displayModal('loginModal') "> {{ trans('frontend.header.login.title') }} </a>
-                  <a href="#" data-toggle="modal" onclick="displayModal('signUpModal') "> {{ trans('frontend.header.signup.title') }} </a>
-                  <a href="{{ route('frontend.ticket') }}" style="margin-left: 22px"><span class=" icon_cart_alt "></span> Giỏ Vé <sup style="color: red;" class="count_ticket">({{ (\Cart::count())?\Cart::count():"0" }})</sup>  </a>
-                </div>
-                  </div>
-              </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav cl-effect-18" id="cl-effect-18">
+                            <li class="act"><a href="index.html" class="effect1 active">Home</a></li>
+                            <li><a href="events.html">Reviews</a></li>
+                            <li><a href="breaking.html">Culture</a></li>
+                            <li><a href="entertainment.html">Entertainment</a></li>
+                            <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                  Business <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="short-codes.html">Short-Codes</a></li>
+                                  <li><a href="icons.html">Icons</a></li>
+                                 
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->    
+                    
+                </nav>
+                
             </div>
-            @endauth
-          </div>
         </div>
-      </div>
-    </header>
+    </div>
+<!-- banner -->

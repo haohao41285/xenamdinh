@@ -1,77 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>House To Home | Trang chủ</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    
-    <link rel="manifest" href="{!!asset('html/assets/manifest.json')!!}">
-    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
-    <link href="{!!asset('html/assets/css/styles.css')!!}" rel="stylesheet">
-    <link href="{!!asset('html/assets/css/checkdate.css')!!}"  rel="stylesheet">
-    @yield('meta')
-    <meta name="linkDatatable" content={{ route('frontend.address') }} />
-    <meta name="linkAdd" content={{ route('frontend.ticket.add') }} />
-    <meta name="token" content={{ csrf_token() }} />
-    
-    @yield('head')
-  </head>
-  <body>
-    @include('frontend.layouts.partials.message_system')
-    @yield('report')
-    @include('frontend.layouts.partials.header')
-    
-    <main class="wrapper" >
-      @yield('content')
-      
-    </main>
-        <!--login form   -->
-        @include('frontend.layouts.partials.modal_login')
-        <!--signUpModal-->
-        @include('frontend.layouts.partials.modal_sign_up')
-        <!--digit code    -->
-        @include('frontend.layouts.partials.modal_digit')
-        <!--information-->
-        @include('frontend.layouts.partials.modal_information')
-      
-    
-    <!-- End Main Content-->
-   @include('frontend.layouts.partials.footer')
-    <!-- End Footer-->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="{!!asset('html/assets/js/library.js')!!}"></script>
-    <script src="{!!asset('html/assets/js/main.js')!!}"></script>
-    <script src="{{ asset('assets/js/function.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
-    <script src="{{ asset('assets/js/form.js') }}"></script>
-    <script src="{{ asset('assets/ajax/address.js') }}"></script>
-    @yield('script')
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Trendy Blog a Blogging Category Bootstrap Responsive Website Template  | Home :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Trendy Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
+<!-- //js -->
+<link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+</head>
 
-    <script>
-        jQuery(document).ready(function($) {
+<body>
 
+@include('frontend.layouts.partials.header')
+@include('frontend.layouts.partials.search')
+@yield('content')
 
-            var is_modal = "";
-
-            @if(count($errors) > 0)
-            var $errors = {!! $errors !!}
-            var is_modal = (errors.is_modal) ? errors.is_modal[0] : "" ;
-            @endif
-
-            if(is_modal == 'signUpModal')
-            {
-                displayModal('signUpModal');
-            }
-
-            @if(session()->has("error_signup"))
-            displayModal('signUpModal');
-            @elseif(session()->has("inforModal"))
-            displayModal('inforModal');
-            @elseif(session()->has("error_login"))
-            displayModal('loginModal');
-            @endif
-        })
-    </script>
-  </body>
+@include('frontend.layouts.partials.footer')
+<!-- for bootstrap working -->
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+<!-- //for bootstrap working -->
+</body>
 </html>
