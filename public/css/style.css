@@ -23,6 +23,49 @@
   font-weight: 400;
   margin: 1em;
 }
+.btn-grey{
+    background-color:#D8D8D8;
+  color:#FFF;
+}
+.rating-block{
+  background-color:#FAFAFA;
+  border:1px solid #EFEFEF;
+  padding:15px 15px 20px 15px;
+  border-radius:3px;
+}
+.bold{
+  font-weight:700;
+}
+.padding-bottom-7{
+  padding-bottom:7px;
+}
+
+.review-block{
+  background-color:#FAFAFA;
+  border:1px solid #EFEFEF;
+  padding:15px;
+  border-radius:3px;
+  margin-bottom:15px;
+}
+.review-block-name{
+  font-size:12px;
+  margin:10px 0;
+}
+.review-block-date{
+  font-size:12px;
+}
+.review-block-rate{
+  font-size:13px;
+  margin-bottom:15px;
+}
+.review-block-title{
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.review-block-description{
+  font-size:13px;
+}
 .search-sec{
     padding: 2rem 0 0 0;
 }
@@ -65,8 +108,8 @@
 
 html, body{
     font-size: 100%;
-	background:	#fff;
-	font-family: 'Oswald', sans-serif;
+	background:	#fff;/*
+	font-family: 'Oswald', sans-serif;*/
 }
 p{
 	margin:0;
@@ -2855,7 +2898,6 @@ img.mobile1 {
 .coment-form textarea {
 	width: 100%;
 	display: block;
-	min-height: 150px;
 	resize: none;
 	margin:1em 0;
 }
@@ -2888,9 +2930,6 @@ img.mobile1 {
 .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
   border-color: #FFF !important;
    background-color:#c6c5c0 !important;
-}
-.coment-form form {
-    margin: 2em 0 0;
 }
 .response h4,.coment-form h4{
 	margin:2em 0 !important;
