@@ -7,7 +7,8 @@ Route::post('search/{slug}','PageController@search')->name('frontend.xe.search')
 Route::post('contact','PageController@contact')->name('frontend.contact');
 
 
-Route::get('detail','TransportController@detail')->name('frontend.transport.detail');
+Route::get('car/detail','TransportController@detail')->name('frontend.transport.detail');
+Route::get('news/detail','NewsController@detail')->name('frontend.news.detail');
 
 
 //News_customer//detail works

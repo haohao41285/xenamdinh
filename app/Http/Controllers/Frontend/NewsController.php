@@ -29,6 +29,11 @@ class NewsController extends Controller
 		$this->customer_news = $customer_news;
 	}
 
+    public function detail
+    {
+        return view('')
+    }
+
     public function detail($slug)
     {
     	// lấy các thành phần cho HTMLDomParser
