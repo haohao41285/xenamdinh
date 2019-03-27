@@ -30,23 +30,11 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="rating-block">
-											<h4>Average user rating</h4>
+											<h4>Xếp Hạng A:</h4>
 											<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
-											<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-											  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-											</button>
-											<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-											  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-											</button>
-											<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-											  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-											</button>
-											<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-											  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-											</button>
-											<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-											  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-											</button>
+											<span class="stars stars--large">
+											  <span style="width: 60%" />
+											</span>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -219,26 +207,17 @@
 								<div class="col-md-6">ĐÁNH GIÁ SAO</div>
 								<div class="col-md-6">
 									<div class="review-block-rate">
-										<button type="button" onclick="rateStar(this)" value="1" class="btn btn-default btn-xs star1" aria-label="Left Align">
+										@for($i=1;$i<6;$i++)
+										<button type="button" onclick="rateStar(this)" value="{{$i}}" class="btn btn-default btn-xs star1" aria-label="Left Align">
 										  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 										</button>
-										<button type="button"  onclick="rateStar(this)" value="2"  class="btn btn-default btn-xs star2" aria-label="Left Align">
-										  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</button>
-										<button type="button"  onclick="rateStar(this)" value="3" class="btn btn-default btn-xs star3" aria-label="Left Align">
-										  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</button>
-										<button type="button"  onclick="rateStar(this)" value="4"  class="btn btn-default btn-xs star4" aria-label="Left Align">
-										  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</button>
-										<button type="button"  onclick="rateStar(this)" value="5"  class="btn btn-default btn-xs star5" aria-label="Left Align">
-										  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</button>
+										@endfor
+										<input type="hidden" value="" id="star_rate" name="star_rate">
 									</div>
 								</div>
 							</div>
 							
-							<i style="color: red;font-size: 14px">*Hãy để lại bình luận văn hóa. Mọi bình luận khiếm nhã, thô tục sẽ bị QTV xóa. Thân!</i>
+							{{-- <i style="color: red;font-size: 14px">*Hãy để lại bình luận văn hóa. Mọi bình luận khiếm nhã, thô tục sẽ bị QTV xóa. Thân!</i> --}}
 							<form>
 								<textarea type="text" class="form-control" rows="1"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Viết bình luận...';}" required="">Viết bình luận...</textarea>
 								<input type="submit" value="Gửi" >
@@ -272,14 +251,24 @@
 function rateStar(that)
 {
 	$(that).toggleClass('btn-warning btn-default');
-	var starCurrent = $(that).siblings('button').val();
+
+	var starCurrent = $(that).val();
+	$('#star_rate').val(starCurrent);
+	$(that).addClass('btn-warning');
+	$(that).removeClass('btn-default');
 	$(that).siblings('button').each(function(e) {
-		var star = $(that).siblings('button').val();
-		if(star < starCurrent)
+		var val = $(this).val();
+		if(val < starCurrent)
 		{
-			alert(star);
+			$(this).addClass('btn-warning');
+			$(this).removeClass('btn-default');
+		}
+		if(val > starCurrent){
+			$(this).removeClass('btn-warning');
+			$(this).addClass('btn-default');
 		}
 	});
+
 
 }
 $(document).ready(function() {
