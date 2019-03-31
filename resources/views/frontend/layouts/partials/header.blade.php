@@ -21,8 +21,8 @@
                         <ul class="nav navbar-nav cl-effect-18" id="cl-effect-18">
                             <li class="act"><a href="index.html" class="effect1 active">Home</a></li>
                             <li><a href="events.html">Reviews</a></li>
-                            <li><a href="breaking.html">Culture</a></li>
-                            <li><a href="entertainment.html">Entertainment</a></li>
+                            <li data-toggle="modal"  data-target="#register_form"><a href="#">register</a></li>
+                            <li data-toggle="modal" onclick="displayModal('loginModal') "><a href="#">Login</a></li>
                             <li role="presentation" class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                   Business <span class="caret"></span>

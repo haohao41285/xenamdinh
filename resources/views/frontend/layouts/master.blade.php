@@ -18,8 +18,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 
+@include('frontend.layouts.partials.login')
+@include('frontend.layouts.partials.register')
 @include('frontend.layouts.partials.header')
 @include('frontend.layouts.partials.search')
+
+  
 @yield('content')
 
 @include('frontend.layouts.partials.footer')
@@ -27,5 +31,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{asset('js/bootstrap.js')}}"></script>
 <!-- //for bootstrap working -->
 @yield('script')
+<script src="{{asset('/js/frontend/form.js')}}" type="text/javascript" ></script>
 </body>
 </html>

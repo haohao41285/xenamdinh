@@ -29,24 +29,24 @@ class NewsController extends Controller
 		$this->customer_news = $customer_news;
 	}
 
-    public function detail
+    public function detail()
     {
-        return view('')
+        return view('news.detail');
     }
 
-    public function detail($slug)
-    {
-    	// lấy các thành phần cho HTMLDomParser
-    	$html_path=$this->news_path->getElement('detail_path').$slug;
+    // public function detail($slug)
+    // {
+    // 	// lấy các thành phần cho HTMLDomParser
+    // 	$html_path=$this->news_path->getElement('detail_path').$slug;
 
-    	$list=$this->news_path->getElement('content');
+    // 	$list=$this->news_path->getElement('content');
 
-    	$content=$this->getContent($html_path,$list);
+    // 	$content=$this->getContent($html_path,$list);
     	
-    	$related_news=$this->news->relatedNews();
+    // 	$related_news=$this->news->relatedNews();
 
-    	return view('news.detail',compact('content','related_news'));
-    }
+    // 	return view('news.detail',compact('content','related_news'));
+    // }
     public function postNews(Request $request)
     {
     	$input = $request->all();
