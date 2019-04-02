@@ -32,5 +32,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for bootstrap working -->
 @yield('script')
 <script src="{{asset('/js/frontend/form.js')}}" type="text/javascript" ></script>
+<script src="{{asset('assets/js/function.js')}}" type="text/javascript" ></script>
 </body>
 </html>

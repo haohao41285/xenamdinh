@@ -305,7 +305,7 @@
       background-color: #e9ecef; }
 
 .custom-control-label {
-  margin-bottom: 0; }
+  margin-left: 1em; }
   .custom-control-label::before {
     position: absolute;
     top: 0.25rem;
