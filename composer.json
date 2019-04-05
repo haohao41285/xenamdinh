@@ -20,7 +20,8 @@
         "pda/pheanstalk": "^4.0",
         "predis/predis": "^1.1",
         "prettus/l5-repository": "^2.6",
-        "pusher/pusher-php-server": "^3.3"
+        "pusher/pusher-php-server": "^3.3",
+        "yajra/laravel-datatables-oracle": "^8.13"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

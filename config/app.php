@@ -168,6 +168,7 @@ return [
         App\Providers\ComposerServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,    
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -221,6 +222,7 @@ return [
         'HTMLDomParser' => Ammadeuss\LaravelHtmlDomParser\Facade::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 
