@@ -1,48 +1,49 @@
 <div class="modal fade loginForm" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="background: url({{ asset('html/images/bg-login.png') }} ") no-repeat bottom;>
-     <button class="close"  type="button" data-dismiss="modal" aria-label="Close"><i class="icon_close"></i></button>
-      <div class="modal-body"> 
-        <form action="{{ route('frontend.registry') }}" id="form_sign_up" method="POST" >
-                  {{ csrf_field() }}
-           <div class="form-style form-style--2">
-              <h4 class="heading--5">{{ trans('frontend.header.signup.title') }}</h4>
-              <div class="form-group">
-                  <input class="form-control" name="customer_info[last_name]" type="text" placeholder="{{ trans('frontend.header.signup.last_name') }}">
-                  <input class="form-control" name="customer_info[first_name]" type="text" placeholder="{{ trans('frontend.header.signup.first_name') }} ">
-              </div>
-                <input  type="radio" name="customer_info[gender]" checked value="1"> {{ trans('frontend.header.signup.gender.1') }} &nbsp
-                <input type="radio" name="customer_info[gender]" value="2">{{ trans('frontend.header.signup.gender.2') }} 
-              <div class="form-group">
-                  <input class="form-control" name="customer[email]" type="email" placeholder="{{ trans('frontend.header.signup.email') }}">
-              </div>
-              <div class="form-group">
-                  <input class="form-control" name="customer[password]" id="password" type="password" placeholder="{{ trans('frontend.header.signup.password') }}">
-              </div>
-              <div class="form-group">
-                  <input class="form-control" name="customer[confirm_password]" id="customer[confirm_password]" type="password" placeholder="{{ trans('frontend.header.signup.confirm_password') }}">
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="custom-control custom-checkbox">
-                    <input class="custom-control-input" name="chu_xe" id="chuXe" type="checkbox">
-                    <label class="custom-control-label" for="chuXe" style="color: red!important">{{ trans('frontend.header.signup.chu_xe') }} </label><span>({{ trans('frontend.header.signup.if') }})</span>
-                    <input type="hidden" name="customer[customer_ip]" value="{{ \Request::ip() }}">
+          <div class="modal-dialog" role="document" >
+                <form action="" method="POST" id="customer_login">
+                  @csrf
+                  <div class="register-wrap" style="background-image:url('{{asset('html/images/car-login1.jpg')}}'); ">
+                    <div class="register-html text-center">
+                      <input id="tab-2" type="radio" name="tab" class="register"><label for="tab-2" class="tab">Đăng Kí</label>
+                      <div class="register-form">
+                        <div class="sign-in-htm">
+                          <div class="group">
+                            <label for="user" class="label">Họ tên</label>
+                            <input id="user" type="text" class="input form-control-sm form-control" placeholder="abc@gmail.com">
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-6 text-center">
+                              <input id="male" type="radio" class="" name="gender" >
+                              <label for="male" >Name</label>
+                            </div>
+                            <div class="col-sm-6 text-center">
+                              <input id="female" type="radio" class="" name="gender" >
+                              <label for="female">Nữ</label>
+                            </div>
+                          </div>
+                          <div class="group">
+                            <label for="user" class="label">Email</label>
+                            <input id="user" type="text" class="input form-control-sm form-control" placeholder="abc@gmail.com">
+                          </div>
+                          <div class="group">
+                            <label for="pass_register" class="label">Password</label>
+                            <input id="pass_register" type="password" class="input form-control-sm form-control" data-type="password">
+                            <span class="glyphicon glyphicon-eye-close eyes-btn" onclick="changeTypeInput(this,'pass_register') "></span>
+                          </div>
+                          <div class="group">
+                            <input type="submit" class="button btn btn-sm" value="Sign In">
+                          </div>
+                          <div class="btn-choose">
+                            <span class="">Hoặc</span>
+                          </div>
+                          <div class="group">
+                            <input type="submit" class="button btn-facebook btn btn-sm" style="background-color: #3c5899!important;" value="FaceBook">
+                          </div>
+                          <div class="hr"></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <button class="btn-sign" type="submit" onclick="submitForm('form_sign_up')"><span>{{ trans('frontend.header.signup.title') }}</span></button>
-              <div class="heading--6"> <span>{{ trans('frontend.header.signup.or') }}</span></div>
-              <div class="row">
-                <div class="">
-                  <button class="btn-sb btn-fb" type="submit" onclick="location.href='{{ route('frontend.social','facebook') }}'"><i class="fa fa-facebook"></i><span>{{ trans('frontend.header.signup.facebook') }}</span></button>
-                </div>
-              </div>
-                  <div class="form-group--other">{{ trans('frontend.header.signup.haveAccount') }} <a href="#" onclick="toggleModal('signUpModal','loginModal')">{{ trans('frontend.header.login.title') }}</a>         
-                  </div>
-              </div>
-        </form>
-      </div>
-    </div>
-  </div>
+                </form>
+          </div>
 </div>

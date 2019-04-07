@@ -23,6 +23,7 @@
                             <li><a href="events.html">Reviews</a></li>
                             <li data-toggle="modal"  onclick="displayModal('signUpModal')"  data-target="#register_form"><a href="#">register</a></li>
                             <li data-toggle="modal" onclick="displayModal('loginModal')"><a href="#">Login</a></li>
+                            <li data-toggle="modal" onclick="displayModal('inforModal')"><a href="#">Information</a></li>
                             <li role="presentation" class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                   Business <span class="caret"></span>

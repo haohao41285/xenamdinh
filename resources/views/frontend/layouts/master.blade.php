@@ -10,6 +10,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('html/assets/css/checkdate.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('html/assets/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
 <script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
 <!-- //js -->
@@ -22,16 +24,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 @include('frontend.layouts.partials.register')
 @include('frontend.layouts.partials.header')
 @include('frontend.layouts.partials.search')
+@include('frontend.layouts.partials.information')
 
   
 @yield('content')
 
 @include('frontend.layouts.partials.footer')
 <!-- for bootstrap working -->
-    <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{asset('/js/bootstrap.js')}}"></script>
 <!-- //for bootstrap working -->
 @yield('script')
-<script src="{{asset('/js/frontend/form.js')}}" type="text/javascript" ></script>
 <script src="{{asset('assets/js/function.js')}}" type="text/javascript" ></script>
+<script src="{{ asset('assets/ajax/address.js') }}"></script>
+<script>
+	function changeTypeInput(that,id_input)
+	{
+		$(that).toggleClass('glyphicon-eye-close glyphicon-eye-open');
+		var type = $('#'+id_input).attr('type');
+		if(type == 'password'){
+			$('#'+id_input).attr("type","text");
+		}
+		else{
+			$('#'+id_input).attr("type","password");
+		}
+	}
+</script>
 </body>
 </html>

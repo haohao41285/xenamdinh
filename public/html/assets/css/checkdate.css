@@ -75,7 +75,9 @@
   width: 30px;
   height: 30px;
   text-align: center;
-  border: 1px solid red;
+  border: 1px solid cornflowerblue;
+  margin-top: 1px;
+  color: white;
   line-height: 30px;
   cursor: pointer
 }
