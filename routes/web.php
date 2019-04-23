@@ -42,3 +42,5 @@ Route::group([
 //Login Facebook, Google
 Route::get('login/{social}', 'SocialController@redirect')->name('frontend.social');
 Route::get('login/{social}/callback', 'SocialController@callback');
+Auth::routes();
+

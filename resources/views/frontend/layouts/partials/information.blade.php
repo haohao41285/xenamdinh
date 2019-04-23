@@ -3,11 +3,11 @@
                 <form action="" method="POST" id="customer_login">
                   @csrf
                   <div class="login-wrap infor-wrap" style="background-image:url('{{asset('html/images/car-login1.jpg')}}'); ">
-                    <div class="login-html text-center">
+                    <div class="login-html text-center" style="background-image:url('{{asset('html/images/car-login1.jpg')}}'); ">
                       <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Xe Khách</label>
                       <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Xe Tải</label>
-                      <div class="login-form">
-                        <div class="sign-in-htm">
+                      <div class="login-form" >
+                        <div class="sign-in-htm" hidden>
                           <div class="group">
                             <label for="car_name" class="label">Tên xe</label>
                             <input id="car_name" type="text" class="input form-control-sm form-control">
@@ -87,7 +87,7 @@
                           </div>
                           <div class="hr"></div>
                         </div>
-                        <div class="for-pwd-htm">
+                        <div class="for-pwd-htm" hidden>
                           <div class="group">
                             <label for="user" class="label">Email</label>
                             <input id="user" type="text" class="input form-control-sm form-control">

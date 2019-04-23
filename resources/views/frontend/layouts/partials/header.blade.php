@@ -1,5 +1,5 @@
 <!-- banner -->
-    <div class="banner" style="background:url(../images/banner_car.jpg) no-repeat 0px 0px;background-size: 100%">
+    <div class="banner" style="background:url({{asset('/images/banner_car.jpg')}}) no-repeat 0px 0px;background-size: 100%">
         <div class="banner-info">
             <div class="container">
                 <nav class="navbar navbar-default">
@@ -12,7 +12,7 @@
                         <span class="icon-bar"></span>
                       </button>
                         <div class="logo">
-                            <a class="navbar-brand" href="index.html"><span>T</span> Trendy Blog</a>
+                            <a class="navbar-brand" href="index.html"><span>T</span></a>
                         </div>
                     </div>
 

@@ -24,7 +24,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 @include('frontend.layouts.partials.register')
 @include('frontend.layouts.partials.header')
 @include('frontend.layouts.partials.search')
-@include('frontend.layouts.partials.information')
+{{-- @include('frontend.layouts.partials.information') --}}
+@include('frontend.layouts.partials.test-login')
 
   
 @yield('content')
@@ -37,17 +38,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('assets/js/function.js')}}" type="text/javascript" ></script>
 <script src="{{ asset('assets/ajax/address.js') }}"></script>
 <script>
-	function changeTypeInput(that,id_input)
-	{
-		$(that).toggleClass('glyphicon-eye-close glyphicon-eye-open');
-		var type = $('#'+id_input).attr('type');
-		if(type == 'password'){
-			$('#'+id_input).attr("type","text");
-		}
-		else{
-			$('#'+id_input).attr("type","password");
-		}
-	}
+	$(document).ready(function() {
+
+		$('.eye-password').on('click',function(){
+
+			$(this).toggleClass('glyphicon-eye-open glyphicon-eye-close');
+
+			var type = $(this).siblings('input').attr('type');
+
+			if(type == 'password'){
+
+				$(this).siblings('input').attr('type','text');
+			}
+			else{
+				$(this).siblings('input').attr('type','password');
+			}
+		})
+	});
 </script>
 </body>
 </html>
