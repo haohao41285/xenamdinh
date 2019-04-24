@@ -22,5 +22,11 @@ Route::group(['prefix'=>'admin/'],function(){
 	Route::get('news/edit',function(){
 		return view('admin.news.news-edit');
 	});
+	Route::get('transport',function(){
+		return view('admin.transport.transport');
+	});
+	Route::get('transport/edit',function(){
+		return view('admin.transport.transport-edit');
+	});
 });
 

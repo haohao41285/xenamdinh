@@ -74,6 +74,19 @@
             <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Nơi Khác</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i>
+            <span>Users</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>Users</a></li>
+            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Customers</a></li>
+          </ul>
+        </li>
         <li>
           <a href="pages/calendar.html">
             <i class="fa fa-cog"></i><span>Setting</span>
