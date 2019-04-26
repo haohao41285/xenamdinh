@@ -28,8 +28,8 @@
         <div class="col-md-12">
           <!-- general form elements -->
           <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title text-center">Transport Information</h3>
+            <div class="box-header with-border text-center">
+              <h3 class="box-title ">Transport Information</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -96,16 +96,25 @@
 	                </div>
                 </div>
                 <div class="form-group">
+	                <label class="col-sm-2 control-label">Loại Xe</label>
+	                <div class="col-sm-10">
+	                	<select class="form-control select2" multiple="multiple" data-placeholder="Loại Xe"
+	                        style="width: 100%;">
+		                  <option value="1">Xe Khách</option>
+		                  <option value="2">Taxi</option>
+	                </select>
+	                </div>
+                </div>
+                <div class="form-group">
 	                <label class="col-sm-2 control-label">Số Ghế</label>
 	                <div class="col-sm-10">
-	                	<select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+	                	<select class="form-control select2" multiple="multiple" data-placeholder="Số Ghế"
 	                        style="width: 100%;">
 		                  <option>4</option>
 		                  <option>7</option>
 		                  <option>16</option>
 	                </select>
 	                </div>
-	                
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Ngày Đi</label>
@@ -136,7 +145,7 @@
                 <div class="bootstrap-timepicker">
 	                <div class="form-group">
 	                    <label class="col-sm-2 control-label">Xuất Bến:</label>
-		                <div class="input-group col-sm-10">
+		                <div class=" col-sm-10">
 		                    <input type="text" class="form-control timepicker">
 		                </div>
 	                </div>
@@ -144,7 +153,7 @@
 	            <div class="bootstrap-timepicker">
 	                <div class="form-group">
 		                <label class="col-sm-2 control-label">Tới Bến:</label>
-		                <div class="input-group col-sm-10">
+		                <div class=" col-sm-10">
 		                    <input type="text" class="form-control timepicker">
 		                </div>
 	                </div>
@@ -163,22 +172,34 @@
                   </div>
                   
                 </div>
+               
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Dịch Vụ</label>
-                  	<div class="col-sm-10">
-                  		<input type="checkbox"> Nhà vệ sinh trên xe<br>
-                  		<input type="checkbox"> Wifi miễn phí<br>
-                  		<input type="checkbox"> Khăn lạnh<br>
-                  		<input type="checkbox"> Nước uống<br>
-                  	</div>
-                    
-                  </label>
-                </div>
+                	<label class="col-sm-2 control-label">Dịch Vụ</label>
+                	<div class="col-sm-10">
+		                <label>
+		                  <input type="checkbox" class="flat-red" checked>
+		                  Nhà vệ sinh trên xe
+		                </label><br>
+		                <label>
+		                  <input type="checkbox" class="flat-red" checked>
+		                  Wifi miễn phí
+		                </label><br>
+		                <label>
+		                  <input type="checkbox" class="flat-red" checked>
+		                  Khăn lạnh
+		                </label><br>
+		                <label>
+		                  <input type="checkbox" class="flat-red" checked>
+		                  Nước uống
+		                </label>
+		            </div>
+              </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-danger  pull-right">Cancel</button>&nbsp
+                <button type="submit" class="btn btn-info pull-right">Save</button>
               </div>
             </form>
           </div>
