@@ -20,9 +20,10 @@ class DatabaseSeeder extends Seeder
         //$this->call(XeTaiSeeder::class);
         //$this->call(TuyenSeeder::class);
         //$this->call(ThoiGianSeeder::class);
-        $this->call(TuyenDungSeeder::class);
+        //$this->call(TuyenDungSeeder::class);
         //$this->call(NewsPathSeeder::class);
         //$this->call(CustomerSeeder::class);
+        $this->call(UserSeeder::class);
 
          DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 

@@ -32,6 +32,10 @@ class ComposerServiceProvider extends ServiceProvider
           $composer_customer =(\Auth::guard('customer')->check()) ?\Auth::guard('customer')->user():null;
              $view->with('composer_customer',$composer_customer);
         });
+        view()->composer('admin.*', function($view) {
+          $composer_user =\Auth::user()?\Auth::user():null;
+             $view->with('composer_user',$composer_user);
+        });
     }
     /**
      * Register services.

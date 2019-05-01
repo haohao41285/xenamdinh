@@ -6,14 +6,27 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card"  style="background-image:url('{{asset('html/images/car-login1.jpg')}}');background-size: 100% ">
+                    {{-- show error login --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    {{-- end show --}}
                     <div class="card-header">Login</div>
                     <div class="card-body">
-                        <form action="" method="">
+                        <form action="{{route('login')}}" method="POST">
+                            @csrf
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="email_address" class="form-control form-control-sm" name="email-address" required autofocus>
+                                    <input type="text" id="email_address" class="form-control form-control-sm" name="email" required autofocus>
                                 </div>
+
                             </div>
 
                             <div class="form-group row">

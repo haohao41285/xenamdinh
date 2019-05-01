@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 2 | Dashboard</title>
+  @yield('meta')
+  <meta name="_token" content="{{csrf_token()}}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -46,6 +48,7 @@
   @yield('style')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+  @include('admin.layouts.partials.message-modal')
 <div class="wrapper">
 
   @include('admin.layouts.partials.header')
@@ -382,6 +385,7 @@
 
     //Timepicker
     $('.timepicker').timepicker({
+      defaultTime: false,
       showInputs: false
     })
   })
@@ -396,5 +400,15 @@
   })
 </script>
 </body>
+@if(session('message'))
+<script>
+  $(window).on('load',function(){
+        $('#modal-danger').modal('show');
+        setTimeout(function(){
+       $('#modal-danger').modal('hide');
+   }, 2000);
+    });
+</script>
+@endif
 @yield('script')
 </html>
