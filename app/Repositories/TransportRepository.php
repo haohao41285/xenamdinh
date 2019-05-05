@@ -11,5 +11,8 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface TransportRepository extends RepositoryInterface
 {
-    //
+    public function database($input);
+    public function find_transport($transport_slug,$route);
+    public function store(array $input);
+    public function remove($id,$active);
 }

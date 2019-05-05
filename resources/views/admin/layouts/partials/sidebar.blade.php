@@ -41,6 +41,14 @@
           </a>
         </li>
         <li>
+          <a href="{{route('admin.news_cate.index')}}">
+            <i class="fa fa-newspaper-o"></i> <span>News Cate</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+        <li>
           <a href="{{route('admin.transport.index')}}">
             <i class="fa fa-newspaper-o"></i> <span>Transports</span>
             <span class="pull-right-container">
@@ -48,16 +56,16 @@
           </a>
         </li>
         <li>
-          <a href="pages/calendar.html">
-            <i class="fa fa-calendar"></i> <span>Caring Car</span>
+          <a href="{{route('admin.routing-transport.index')}}">
+            <i class="fa fa-calendar"></i> <span>Routing Transport</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-blue">17</small>
             </span>
           </a>
         </li>
         <li>
-          <a href="{{route('admin.routing-transport.index')}}">
-            <i class="fa fa-calendar"></i> <span>Routing Transport</span>
+          <a href="pages/calendar.html">
+            <i class="fa fa-calendar"></i> <span>Caring Car</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-blue">17</small>
             </span>

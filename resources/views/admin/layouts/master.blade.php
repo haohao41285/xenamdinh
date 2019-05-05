@@ -411,4 +411,5 @@
 </script>
 @endif
 @yield('script')
+<script src="{{asset('assets/js/function.js')}}" type="text/javascript"></script>
 </html>

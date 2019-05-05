@@ -36,19 +36,24 @@
                   <div class="col-sm-10">
                     <select class="form-control select2-selection select2-selection--single"  name="transport_time_format" data-placeholder="Select a Route"
                             style="width: 100%;">
-                      <option {{$routing_transport->route_time_format==0?"selected":""}} value="0">Time</option>
-                      <option {{$routing_transport->route_time_format==1?"selected":""}} value="1">Date</option>
+                      <option {{($routing_transport!= ""&&$routing_transport->route_time_format==0)?"selected":""}} value="0">Time</option>
+                      <option {{($routing_transport!= ""&&$routing_transport->route_time_format==1)?"selected":""}} value="1">Date</option>
                       
                     </select>
                   </div>
               </div>
             <div class="form-group">
-              <input type="hidden" name="route_image_hidden" value="{{isset($routing_transport)?$routing_transport->route_image:""}}" name="">
-                <label for="exampleInputFile" class="col-sm-2 control-label">Routing Avatar</label>
-                <div class="col-sm-10">
-              	<input type="file" id="exampleInputFile" name="route_image">
+              <label class="col-md-2 control-label">Routing Avatar</label>
+              <div class="col-md-10">
+                <input type="hidden" name="route_image_hidden" value="{{($routing_transport!= "")?$routing_transport->route_image:""}}">
+                <input id="ava" name="route_image" onchange="readURL(this,'avatar')"  type="file">
+              </div>
             </div>
-              
+            <div class="form-group">
+              <div class="col-md-2"> </div>
+              <div class="col-md-10">
+                <img style="max-height:100px;" src="{{$routing_transport!=""?asset($routing_transport->route_image):""}}" id="avatar" alt="">
+              </div>
             </div>
               <div class="box-footer">
                 <button type="button" class="btn btn-danger btn-sm  pull-right" id="cancel_box_outside">Cancel</button>&nbsp

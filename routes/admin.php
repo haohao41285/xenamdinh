@@ -13,28 +13,49 @@
 Route::group(['prefix'=>'admin/'],function(){
 	Auth::routes();
 	Route::group(['middleware'=>'auth'],function(){
+
 		Route::get('dashboard',function(){
 			return view('admin.dashboard');
 		});
-		Route::get('news',function(){
-			return view('admin.news.news');
-		});
-		Route::get('news/edit',function(){
-			return view('admin.news.news-edit');
-		});
+
+		//NEWS
+		Route::group(['prefix'=>'news'],function(){
+			Route::get('/','NewsController@viewNews');
+			Route::get('/edit',function(){
+				return view('admin.news.news-edit');
+			});
+	    });
 		//TRANSPORT
-		Route::get('transport','TransportController@index')->name('admin.transport.index');
-		Route::get('transport/edit/{id?}','TransportController@getEdit')->name('admin.transport.getEdit');
-		Route::post('transport/edit','TransportController@postEdit')->name('admin.transport.postEdit');
+		Route::get('/result/address','TransportController@addressResult')->name('admin.address');
+
+		Route::group(['prefix'=>'transport'],function(){
+			Route::get('/','TransportController@index')->name('admin.transport.index');
+			Route::get('/datatable','TransportController@datatable')->name('admin.transport.datatable');
+			Route::get('/edit/{transport_slug?}/{route?}','TransportController@getEdit')->name('admin.transport.getEdit');
+			Route::post('/edit','TransportController@postEdit')->name('admin.transport.postEdit');
+			Route::post('/delete','TransportController@delete')->name('admin.transport.delete');
+	    });
 		//END TRANSPORT
 
 		//ROUTING TRANSPORT
-		Route::get('routing-transport','RoutingTransportController@index')->name('admin.routing-transport.index');
-		Route::get('routing-transport/edit/{id?}','RoutingTransportController@getEdit')->name('admin.routing-transport.getEdit');
-		Route::post('routing-transport/edit/','RoutingTransportController@postEdit')->name('admin.routing-transport.postEdit');
-		Route::get('routing-transport/getData/','RoutingTransportController@getData')->name('admin.routing-transport.getData');
-		Route::post('routing-transport/delete','RoutingTransportController@delete')->name('admin.routing-transport.delete');
+		Route::group(['prefix'=>'routing-transport'],function(){
+			Route::get('/','RoutingTransportController@index')->name('admin.routing-transport.index');
+			Route::get('/edit/{id?}','RoutingTransportController@getEdit')->name('admin.routing-transport.getEdit');
+			Route::post('/edit/','RoutingTransportController@postEdit')->name('admin.routing-transport.postEdit');
+			Route::get('/getData/','RoutingTransportController@getData')->name('admin.routing-transport.getData');
+			Route::post('/delete','RoutingTransportController@delete')->name('admin.routing-transport.delete');
+		});
 		//END ROUTING TRANSPORT
+
+		//NEWS CATE
+		Route::group(['prefix'=>'news-cate'],function(){
+			Route::get('/','NewsCateController@index')->name('admin.news_cate.index');
+			Route::get('/edit/{id?}','NewsCateController@getEdit')->name('admin.news_cate.getEdit');
+			Route::post('/edit/','NewsCateController@postEdit')->name('admin.news_cate.postEdit');
+			Route::get('/getData/','NewsCateController@getData')->name('admin.news_cate.getData');
+			Route::post('/delete','NewsCateController@delete')->name('admin.news_cate.delete');
+		});
+		//END NEWS CATE
 
 		Route::get('setting/information',function(){
 		return view('admin.setting.information');

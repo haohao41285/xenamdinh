@@ -38,7 +38,6 @@ class RoutingTransportController extends Controller
 
         if($id == 0){
             
-
             $check = $this->routing_transport->checkRouteName($input['route_slug'],$id);
             if($check != 0){
 
@@ -72,7 +71,9 @@ class RoutingTransportController extends Controller
     }
     public function getData(Request $request){
 
-        $route_list = $this->routing_transport->datatable();
+        $input = $request->all();
+
+        $route_list = $this->routing_transport->datatable($input);
 
         return DataTables::of($route_list)
 
@@ -88,7 +89,7 @@ class RoutingTransportController extends Controller
 
                 return '<a href="'.route('admin.routing-transport.getEdit').'" ><i class="fa fa-plus"></i></a> 
                         <a href="'.route('admin.routing-transport.getEdit',$row->route_slug).'" ><i class="fa fa-edit"></i></a> 
-                        <a href="javascript:void(0)" id="'.$row->id.'" class="delete" ><i class="fa fa-trash-o"></i></a>';
+                        <a href="javascript:void(0)" id="'.$row->id.'" active="'.$row->route_active.'" class="delete" ><i class="fa fa-trash-o"></i></a>';
                })
 
                ->rawColumns(['action','route_image'])
@@ -98,10 +99,10 @@ class RoutingTransportController extends Controller
 
         if(isset($request->id)){
 
-        $this->routing_transport->delete($request->id);
+        $this->routing_transport->remove($request->id,$request->active);
 
-        return "Delete routing success!";
+        return "Moving success!";
         }else
-        return "Delete routing error!";
+        return "Moving error!";
     }
 }

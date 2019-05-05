@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('meta')
-<meta name="get_route" content="{{route('admin.routing-transport.delete')}}">
-<meta name="get_data" content="{{route('admin.routing-transport.getData')}}">
+<meta name="get_route" content="{{route('admin.news_cate.delete')}}">
+<meta name="get_data" content="{{route('admin.news_cate.getData')}}">
 @section('style')
 
 @stop
@@ -10,11 +10,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Routing Transport List
+        News Cate List
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Routing Transport</a></li>
+        <li><a href="#">News Cate</a></li>
         <li class="active">List</li>
       </ol>
     </section>
@@ -24,9 +24,9 @@
 	          <div class="box">
 	          	<br>
 	          	<div class="col-md-12">
-	          		<form action="" method="" id="routing_transport_form" accept-charset="utf-8">
+	          		<form action="" method="" id="cate_news_form" accept-charset="utf-8">
 	          			<div class="col-md-2">
-	          			<select name="route_active" class="form-control form-control-sm" id="route_active">
+	          			<select name="cate_news_active" class="form-control form-control-sm" id="cate_news_active">
 	          				<option value="">Active or Not</option>
 	          				<option value="1">Yes</option>
 	          				<option value="0">No</option>
@@ -37,13 +37,13 @@
 		          		    <button type="button" class="reset btn btn-sm btn-danger">Reset</button>
 		          		</div>
 		          		<div class="col-md-2">
-		          		    <a href="{{route('admin.routing-transport.getEdit')}}" title=""><button type="button" class="btn btn-sm btn-info">Add New</button></a>
+		          		    <a href="{{route('admin.news_cate.getEdit')}}" title=""><button type="button" class="btn btn-sm btn-info">Add New</button></a>
 		          		</div>
 	          		</form>
 	          	</div>
 	          	<br>
 	            <div class="box-header">
-	              <h3 class="box-title">Routing Transport List</h3>
+	              <h3 class="box-title">News Cate List</h3>
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
@@ -51,8 +51,7 @@
 	                <thead>
 	                <tr>
 	                  <th>ID</th>
-	                  <th>Route Name</th>
-	                  <th>Route Image</th>
+	                  <th>News Cate Name</th>
 	                  <th>Update By</th>
 	                  <th>Action</th>
 	                </tr>
@@ -70,5 +69,5 @@
 </div>
 @stop
 @section('script')
-<script src="{{asset('admin/js/page/routing_transport.js')}}" type="text/javascript" ></script>
+<script src="{{asset('admin/js/page/news_cate.js')}}" type="text/javascript" ></script>
 @stop

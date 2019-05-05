@@ -1,4 +1,7 @@
 @extends('admin.layouts.master')
+@section('meta')
+<meta name="linkDatatable" content="{{route('admin.address')}}">
+@endsection
 @section('style')
 <link href="{{asset('html/assets/css/checkdate.css')}}" rel="stylesheet" type="text/css" media="all" />
 <style type="text/css" media="screen">
@@ -32,14 +35,15 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{route('admin.transport.postEdit')}}" method="POST" class="form-horizontal">
+            <form role="form" action="{{route('admin.transport.postEdit')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
               @csrf
               <div class="box-body">
+                <input type="hidden" name="transport_id"  value="{{$transport_list!= ""?$transport_list->id:0}}">
               	
                 <div class="form-group">
                 	<label for="inputEmail3" class="col-sm-2 control-label">Tên Xe</label>
                 	<div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm" name="transport_name" id="transport_name">
+                        <input type="text" class="form-control form-control-sm" name="transport_name" id="transport_name" value="{{$transport_list!=""?$transport_list->transport_name:old('transport_name')}}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,7 +53,7 @@
 		                        style="width: 100%;">
 
                       @foreach($routing_list as $routing)
-		                  <option time_format="{{$routing->route_time_format}}" value="{{$routing->id}}">{{$routing->route_name}}</option>
+		                  <option time_format="{{$routing->route_time_format}}"  {{($transport_list!="") && ($transport_list->transport_route_id==$routing->id)?"selected":""}} value="{{$routing->id}}">{{$routing->route_name}}</option>
                       @endforeach
 		                </select>
 		            </div>
@@ -59,10 +63,10 @@
                 	<label for=""  class="col-sm-2 control-label">Tỉnh</label>
                 	<div class="col-sm-10">
             			<select class="form-control select2-selection select2-selection--single" name="transport_province" data-placeholder="Tỉnh"
-	                        style="width: 100%;">
-		                  <option>4</option>
-		                  <option>7</option>
-		                  <option>16</option>
+	                        style="width: 100%;"  onchange="changeProvince('province','district') " id="province">
+                    @foreach($composer_province as $province)
+		                  <option value="{{$province['province_id']}}">{{$province['title']}}</option>
+                    @endforeach
 		                </select>
 		            </div>
 		        </div>
@@ -70,10 +74,7 @@
                 	<label for=""  class="col-sm-2 control-label">Huyện</label>
                 	<div class="col-sm-10">
             			<select  class="form-control select2-selection select2-selection--single"  name="transport_district" data-placeholder="Huyện"
-	                        style="width: 100%;">
-		                  <option>4</option>
-		                  <option>7</option>
-		                  <option>16</option>
+	                        style="width: 100%;" id="district"  onchange="changeProvince('district','ward','yes') ">
 		                </select>
 	                </div>
 	            </div>
@@ -81,10 +82,7 @@
                 	<label for=""  class="col-sm-2 control-label">Xã</label>
                 	<div class="col-sm-10">
             			<select  class="form-control select2-selection select2-selection--single" name="transport_ward" data-placeholder="Xã"
-	                        style="width: 100%;">
-		                  <option>4</option>
-		                  <option>7</option>
-		                  <option>16</option>
+	                        style="width: 100%;" id="ward">
 		                </select>
 	                </div>
 	            </div>
@@ -100,19 +98,23 @@
 	                <div class="col-sm-10">
 	                	<select class="form-control select2-selection select2-selection--single" name="transport_cate_id" data-placeholder="Loại Xe"
 	                        style="width: 100%;">
-		                  <option value="1">Xe Khách</option>
-		                  <option value="2">Taxi</option>
+                        @foreach($cate_transport_list as $cate_transport)
+		                      <option {{ ($transport_list&&$transport_list->transport_cate_id==$cate_transport->id)?"selected":""}} value="{{$cate_transport->id}}">{{$cate_transport->cate_transport_name}}</option>
+                        @endforeach
 	                </select>
 	                </div>
                 </div>
                 <div class="form-group">
 	                <label class="col-sm-2 control-label">Số Ghế</label>
 	                <div class="col-sm-10">
+                    @php 
+                    $so_ghe_arr = ['4','7','9','12','16','45'];
+                    @endphp
 	                	<select class="form-control select2-selection select2-selection--single" name="transport_character"data-placeholder="Số Ghế"
 	                        style="width: 100%;">
-		                  <option>4</option>
-		                  <option>7</option>
-		                  <option>16</option>
+                      @foreach($so_ghe_arr as $so_ghe)
+		                    <option {{($transport_list&&$transport_list->transport_character==$so_ghe)?"selected":""}} value="{{$so_ghe}}">{{$so_ghe}}</option>
+                      @endforeach
 	                </select>
 	                </div>
                 </div>
@@ -161,33 +163,52 @@
 	            <div class="form-group">
                 	<label for="inputEmail3" class="col-sm-2 control-label">Lộ Trình</label>
                 	<div class="col-sm-10">
-                        <input type="text" name="transport_way" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Enter email">
+                        <input type="text" name="transport_way" class="form-control form-control-sm" id="" placeholder="Lộ trình" value="{{$transport_list?$transport_list->transport_way:old('transport_way')}}">
                     </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputFile" class="col-sm-2 control-label">Ảnh Đại Diện</label>
+                  <label for="transport_phone" class="col-sm-2 control-label">Liên Hệ</label>
                   <div class="col-sm-10">
-                  	<input type="file"  name="transport_image"  id="">
+                        <input type="text" name="transport_phone" class="form-control form-control-sm" id="transport_phone" data-inputmask='"mask": "(999) 999-9999"' data-mask  value="{{$transport_list?$transport_list->transport_phone:old('transport_phone')}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="transport_phone_add" class="col-sm-2 control-label">Liên Hệ(nếu có)</label>
+                  <div class="col-sm-10">
+                        <input type="text" name="transport_phone_add" class="form-control form-control-sm" id="transport_phone_add" data-inputmask='"mask": "(999) 999-9999"' data-mask  value="{{$transport_list?$transport_list->transport_phone_add:old('transport_phone_add')}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                      <label class="col-md-2 control-label">Ảnh đại diện</label>
+                      <div class="col-md-10">
+                        <input type="hidden" value="{{$transport_list?$transport_list->transport_image:""}}" name="transport_image_old">
+                        <input id="ava" name="transport_image" onchange="readURL(this,'avatar')"  type="file">
+                      </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-2"> </div>
+                  <div class="col-md-10">
+                    <img style="max-height:100px;" src="{{$transport_list?asset($transport_list->transport_image):""}}" id="avatar" alt="">
                   </div>
                 </div>
                 <div class="form-group">
                 	<label class="col-sm-2 control-label">Dịch Vụ</label>
                 	<div class="col-sm-10">
 		                <label>
-		                  <input type="checkbox" name="transport_note[]" class="flat-red" checked>
+		                  <input type="checkbox" name="transport_note[]"  value="Nhà vệ sinh trên xe" class="flat-red" checked>
 		                  Nhà vệ sinh trên xe
 		                </label><br>
 		                <label>
-		                  <input type="checkbox" name="transport_note[]" class="flat-red" checked>
+		                  <input type="checkbox" name="transport_note[]" value="Wifi miễn phí" class="flat-red" checked>
 		                  Wifi miễn phí
 		                </label><br>
 		                <label>
-		                  <input type="checkbox" name="transport_note[]" class="flat-red" checked>
+		                  <input type="checkbox" name="transport_note[]" value="Khăn lạnh" class="flat-red" checked>
 		                  Khăn lạnh
 		                </label><br>
 		                <label>
-		                  <input type="checkbox" name="transport_note[]" class="flat-red" checked>
-		                  Nước uống
+		                  <input type="checkbox" value="Nước lọc" name="transport_note[]" class="flat-red" checked>
+		                  Nước lọc
 		                </label>
 		            </div>
               </div>
@@ -207,6 +228,7 @@
 </div>
 @stop
 @section('script')
+<script src="{{asset('assets/ajax/address.js')}}" type="text/javascript"></script>
 <script>
   $(document).ready(function() {
     $('#transport_route_id').change(function(event) {

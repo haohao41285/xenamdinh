@@ -18,22 +18,17 @@ $(function () {
               "targets": 3,
               "className": "text-center",
          },
-         {
-              "targets": 4,
-              "className": "text-center",
-         }
          ],
          ajax:{ 
           url:get_data,
           data:function(d){
-            d.route_active = $('#route_active option:selected').val();
+            d.cate_news_active = $('#cate_news_active option:selected').val();
           }
-         },
+        },
              columns: [
 
               { data: 'id', name: 'id' },
-              { data: 'route_name', name: 'route_name' },
-              { data: 'route_image', name: 'route_image'},
+              { data: 'cate_news_name', name: 'cate_news_name' },
               { data: 'updated_by', name: 'updated_by' },
               { data: 'action' , name: 'action',  orderable: false, searchable: false }
                 ],
@@ -41,7 +36,6 @@ $(function () {
     $(document).on('click','.delete',function(e){
     	
     	var id = $(this).attr('id');
-      var active = $(this).attr('active');
     	var get_route = $('meta[name=get_route]').attr('content');
     	var _token = $('meta[name=_token]').attr('content');
 
@@ -49,7 +43,7 @@ $(function () {
     		url: get_route,
     		type: 'POST',
     		dataType: 'html',
-    		data: {id: id,_token : _token,active : active},
+    		data: {id: id,_token : _token},
     	})
     	.done(function(data) {
     		table.draw();
@@ -58,8 +52,8 @@ $(function () {
     		// console.log(data);
     	})
     	.fail(function() {
-    		alert("Moving error!");
-    		//console.log("error");
+    		alert("Delete routing error!");
+    		console.log("error");
     	});
     	
     });
@@ -68,8 +62,9 @@ $(function () {
       e.preventDefault();
     });
     $(document).on('click','.reset',function(e){
-      $('#routing_transport_form')[0].reset();
+      $('#cate_news_form')[0].reset();
       table.draw();
       e.preventDefault();
     });
+    
   });

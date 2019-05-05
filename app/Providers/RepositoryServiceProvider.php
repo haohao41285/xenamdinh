@@ -38,6 +38,9 @@ class RepositoryServiceProvider extends ServiceProvider
          $this->app->bind(\App\Repositories\ContactRepository::class,\App\Repositories\ContactRepositoryEloquent::class);
          //new
          $this->app->bind(\App\Repositories\RoutingTransportRepository::class,\App\Repositories\RoutingTransportRepositoryEloquent::class);
+         $this->app->bind(\App\Repositories\TransportRepository::class,\App\Repositories\TransportRepositoryEloquent::class);
+         $this->app->bind(\App\Repositories\CateTransportRepository::class,\App\Repositories\CateTransportRepositoryEloquent::class);
+         $this->app->bind(\App\Repositories\NewsCateRepository::class,\App\Repositories\NewsCateRepositoryEloquent::class);
 
     }
 }

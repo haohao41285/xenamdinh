@@ -5,16 +5,16 @@ namespace App\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface RoutingTransportRepository.
+ * Interface NewsCateRepository.
  *
  * @package namespace App\Repositories;
  */
-interface RoutingTransportRepository extends RepositoryInterface
+interface NewsCateRepository extends RepositoryInterface
 {
-     public function getRoute($slug);
+    public function getRoute($slug);
      public function checkRouteName($input,$id);
      public function datatable($input);
      public function store($input);
      public function update(array $input,$id);
-     public function remove($id,$active);
+     public function delete($id);
 }

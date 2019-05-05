@@ -51,9 +51,17 @@ class RoutingTransportRepositoryEloquent extends BaseRepository implements Routi
 
         return $this->model->where('route_slug',$slug)->first();
     }
-    public function datatable(){
+    public function datatable($input){
+
+        $route_list = $this->model->select('*');
+
+        if($input['route_active'] != ""){
+
+            $route_list = $route_list->where('route_active',$input['route_active']);
+        }else
+            $route_list = $route_list->where('route_active',1);
         
-        return $this->model->where('route_active',1)->get();
+        return $route_list;
     }
     public function update(array $input,$id){
 
@@ -71,9 +79,13 @@ class RoutingTransportRepositoryEloquent extends BaseRepository implements Routi
         return $this->model->find($id)->update($input);
 
     }
-    public function delete($id){
+    public function remove($id,$active){
 
-        $this->model->where('id',$id)->update(['route_active'=>0]);
+        if($active == 1)
+
+            $this->model->where('id',$id)->update(['route_active'=>0]);
+        else
+            $this->model->where('id',$id)->update(['route_active'=>1]);
     }
 
 
