@@ -4,21 +4,26 @@
 <title>Trendy Blog a Blogging Category Bootstrap Responsive Website Template  | Home :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Trendy Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta name="keywords" content=""/>
+<meta name="csrf-token" content="{{csrf_token()}}">
+@yield('meta')
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
 <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('html/assets/css/checkdate.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('html/assets/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+@yield('style')
 <!-- js -->
 <script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
 <!-- //js -->
-<link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css' />
 </head>
 
 <body>
+	@php
+	echo \Auth::guard('customer')->user()->email;
+	@endphp
 
 @include('frontend.layouts.partials.login')
 @include('frontend.layouts.partials.register')
@@ -34,7 +39,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- for bootstrap working -->
     <script src="{{asset('/js/bootstrap.js')}}"></script>
 <!-- //for bootstrap working -->
-@yield('script')
 <script src="{{asset('assets/js/function.js')}}" type="text/javascript" ></script>
 <script src="{{ asset('assets/ajax/address.js') }}"></script>
 <script>
@@ -53,8 +57,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			else{
 				$(this).siblings('input').attr('type','password');
 			}
-		})
+		});
+		$.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
 	});
 </script>
 </body>
+@yield('script')
 </html>

@@ -32,19 +32,19 @@ class TransportRepositoryEloquent extends BaseRepository implements TransportRep
 
         $transport_list = $this->model->select('*');
 
-        if($input['transport_cate_id']!=""){
+        if(isset($input['transport_cate_id']) && $input['transport_cate_id']!=""){
 
              $transport_list = $transport_list->where('transport_route_id',$input['transport_cate_id']);
         }
-        if($input['transport_route_id']!=""){
+        if( isset($input['transport_route_id']) && $input['transport_route_id']!=""){
 
             $transport_list = $transport_list->where('transport_route_id',$input['transport_route_id']);
         }
-        if($input['transport_active']!=""){
+        if(isset($input['transport_active']) && $input['transport_active']!=""){
 
             $transport_list = $transport_list->where('transport_active',$input['transport_active']);
         }
-        if($input['transport_active']==""){
+        if(!isset($input['transport_active']) ||(isset($input['transport_active']) && $input['transport_active']=="")){
 
             $transport_list = $transport_list->where('transport_active',1);
         }

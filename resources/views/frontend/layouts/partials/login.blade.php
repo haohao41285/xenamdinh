@@ -1,8 +1,8 @@
 <div class="modal fade loginForm" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document" >
-            <form action="" method="POST" id="customer_login">
+            <form action="{{route('frontend.login')}}" method="POST" id="customer_login">
                   @csrf
-                   <div class=" login-edit text-center" style="background-image:url('{{asset('html/images/car-login1.jpg')}}'); "><span class="remove-btn">X</span>
+                   <div class=" login-edit text-center" style="background-image:url('{{asset('html/images/car-login1.jpg')}}'); ">
                     <div class="login-html-edit">
 
                       <input id="tab_signin" type="radio" name="tab" class="sign-in" checked><label for="tab_signin" class="tab">Đăng Nhập</label>
@@ -11,11 +11,11 @@
                         <div class="sign-in-htm">
                           <div class="group">
                             <label for="user" class="label">Email</label>
-                            <input id="user" type="text" class="input form-control form-control-sm" placeholder="Email">
+                            <input id="user" type="text" class="input form-control form-control-sm" name="email" placeholder="Email">
                           </div>
                           <div class="group">
                             <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input form-control form-control-sm" data-type="password" placeholder="Password">
+                            <input id="pass" type="password" class="input form-control form-control-sm" name="password" data-type="password" placeholder="Password">
                             <span class="glyphicon glyphicon-eye-close eye-password"></span>
                           </div>
                           <div class="group">

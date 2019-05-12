@@ -48,11 +48,12 @@ class CustomerRepositoryEloquent extends BaseRepository implements CustomerRepos
     {
         DB::beginTransaction();
 
-        $input['customer']['remember_token']=$input['_token'];
+        //$input['customer']['remember_token']=$input['_token'];
 
         $input['customer']['active'] = getUserNoActive();
+        $input['customer']['last_logon'] = now();
 
-        if(!$input['customer']['password'])
+        if(!isset($input['customer']['password']))
         {
             unset($input['customer']['password']);
         }
@@ -66,7 +67,7 @@ class CustomerRepositoryEloquent extends BaseRepository implements CustomerRepos
             DB::rollback();
             return false;
         }
-        Log::info("111-Người Dùng Mới: ".$input['customer_info']['last_name']." ".$input['customer_info']['first_name']);
+        Log::info("111-Người Dùng Mới: ".$input['customer_info']['customer_lastname']." ".$input['customer_info']['customer_firstname']);
 
         DB::commit();
 

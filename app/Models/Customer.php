@@ -22,8 +22,7 @@ class Customer extends Authenticatable implements Transformable
     	'password',
     	'last_logon',
     	'active',
-    	'customer_ip',
-        'remember_token'
+    	'customer_ip'
     ];
     protected $hidden=[
         'password',
@@ -38,13 +37,13 @@ class Customer extends Authenticatable implements Transformable
     {
         return $this->hasOne(CustomerInfo::class, 'customer_id');
     }
-    public function tuyen_dungs()
-    {
-        return $this->hasMany(TuyenDung::class, 'customer_id','id');
-    }
-    public function customer_news()
-    {
-        return $this->hasMany(CustomerNews::class,'customer_id');
-    }
+    // public function tuyen_dungs()
+    // {
+    //     return $this->hasMany(TuyenDung::class, 'customer_id','id');
+    // }
+    // public function customer_news()
+    // {
+    //     return $this->hasMany(CustomerNews::class,'customer_id');
+    // }
     
 }

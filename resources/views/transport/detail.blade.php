@@ -10,18 +10,18 @@
 							<a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>10</a>
 						</div>
 						<div class="blog-leftr">
-							<img src="images/25.jpg" alt=" " class="img-responsive" />
-							<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-							reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-							pariatur</p>
+							<img src="{{$transport_detail?asset($transport_detail->transport_image):""}}" alt=" " class="img-responsive" />
 							<ul>
-								<li><a href="#"><i class="glyphicon glyphicon-tasks" aria-hidden="true"></i>Tuyến: </a></li>
-								<li><a href="#"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i>Lịch Trình: </a></li>
-								<li><a href="#"><i class="glyphicon glyphicon-phone-alt" aria-hidden="true"></i>Liên Hệ:</a></li>
-								<li><a href="#"><i class="glyphicon glyphicon-bed" aria-hidden="true"></i>Số Ghế: </a></li>
+								<li><a href="javascript:void(0)" ><i class="glyphicon glyphicon-bed" aria-hidden="true"></i>Số Ghế: {{$transport_detail->transport_character}}</a></li>
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-tasks" aria-hidden="true"></i>Tuyến: {{ucfirst($transport_detail->routes->route_name)}}</a></li>
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i>Lịch Trình: {{ucfirst($transport_detail->transport_way)}}</a></li>
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-bed" aria-hidden="true"></i>Thời Gian Khởi Hành: {{$transport_detail->transport_time_go}}</a></li>
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-bed" aria-hidden="true"></i>Thời Gian Trở Về: {{$transport_detail->transport_time_back}}</a></li>
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-phone-alt" aria-hidden="true"></i>Liên Hệ: {{$transport_detail->transport_phone}}</a></li>
+							@if($transport_detail->transport_phone_add != null)
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-phone-alt" aria-hidden="true"></i>Liên Hệ 2: {{$transport_detail->transport_phone_add}}</a></li>
+							@endif
+								
 							</ul>
 						</div>
 						<div class="clearfix"> </div>
@@ -31,9 +31,9 @@
 									<div class="col-md-6">
 										<div class="rating-block">
 											<h4>Xếp Hạng A:</h4>
-											<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+											<h2 class="bold padding-bottom-7">{{$transport_detail->transport_average}}<small>/ 5</small></h2>
 											<span class="stars stars--large">
-											  <span style="width: 60%" />
+											  <span style="width: {{($transport_detail->transport_average/5)*100}}%" />
 											</span>
 										</div>
 									</div>

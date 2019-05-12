@@ -6,10 +6,14 @@ Route::post('search/{slug}','PageController@search')->name('frontend.xe.search')
 //contact
 Route::post('contact','PageController@contact')->name('frontend.contact');
 
-
-Route::get('car/detail','TransportController@detail')->name('frontend.transport.detail');
 Route::get('news/detail','NewsController@detail')->name('frontend.news.detail');
 
+//TRANSPORT
+Route::group(['prefix' => 'transport/'], function() {
+    Route::get('list','TransportController@list')->name('frontend.transport.list');
+    Route::post('get-data','TransportController@getData')->name('frontend.transport.get-data');
+    Route::get('detail/{id?}/{route_id}','TransportController@detail')->name('frontend.transport.detail');
+});
 
 //News_customer//detail works
 Route::group(['middleware' => 'auth:customer'], function() {

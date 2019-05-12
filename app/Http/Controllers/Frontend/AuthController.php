@@ -36,26 +36,27 @@ class AuthController extends Controller
         $this->xe_tai = $xe_tai;
         $this->taxi = $taxi;
 	}
-    public function registry(SignUpRequest $request)
+    public function registry(Request $request)
     {
     	$input=$request->all();
-        //dd($input);
 
-    	$email = $input['customer']['email'];
+    	//$email = $input['customer']['email'];
+        $input['customer']['customer_ip'] = $request->ip();
+        //dd($input);
 
     	$result = $this->customer->store($input);
     	
         Auth::guard('customer')->login($result);
 
-        $customer_info = $this->customer->getCustomerInfo($email); 
+        //$customer_info = $this->customer->getCustomerInfo($email); 
         //$when = now()->addMinutes(1);
 
         //queue send mail (delay send mail)
-        dispatch(new \App\Jobs\sendActiveAccountJob($customer_info,$email))->delay(now()->addMinutes(10));
+        //dispatch(new \App\Jobs\sendActiveAccountJob($customer_info,$email))->delay(now()->addMinutes(10));
 
-        if (isset($input['chu_xe'])) {
-            $request->session()->flash('inforModal','inforModal');
-        }
+        // if (isset($input['chu_xe'])) {
+        //     $request->session()->flash('inforModal','inforModal');
+        // }
 
         return back();
 
@@ -99,12 +100,12 @@ class AuthController extends Controller
     {
         $input = $request->all();
 
-        $remember_me =(isset($input['remember_me']))?"true":"false";
+        //$remember_me =(isset($input['remember_me']))?"true":"false";
 
         $customer = Customer::where('email',$input['email'])->first();
 
         if ($customer && Hash::check($input['password'],$customer->password)){
-            Auth::guard('customer')->login($customer,$remember_me);
+            Auth::guard('customer')->login($customer);
         }else
         {
             $request->session()->flash('error_login',trans('frontend.header.login.error'));
