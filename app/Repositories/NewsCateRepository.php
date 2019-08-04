@@ -17,4 +17,5 @@ interface NewsCateRepository extends RepositoryInterface
      public function store($input);
      public function update(array $input,$id);
      public function delete($id);
+     public function getAllNewsCate();
 }

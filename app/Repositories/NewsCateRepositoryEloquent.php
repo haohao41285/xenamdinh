@@ -49,9 +49,9 @@ class NewsCateRepositoryEloquent extends BaseRepository implements NewsCateRepos
 
         if($input['cate_news_active'] != ""){
 
-            $cate_news_list = $cate_news_list->where('cate_news_active',$input['cate_news_active']);
+            $cate_news_list = $cate_news_list->where('status',$input['cate_news_active']);
         }else
-            $cate_news_list = $cate_news_list->where('cate_news_active',1);
+            $cate_news_list = $cate_news_list->where('status',1);
 
         return $cate_news_list;
     }
@@ -62,7 +62,10 @@ class NewsCateRepositoryEloquent extends BaseRepository implements NewsCateRepos
     }
     public function delete($id){
 
-        $this->model->where('id',$id)->update(['cate_news_active'=>0]);
+        $this->model->where('id',$id)->update(['status'=>0]);
+    }
+    public function getAllNewsCate(){
+        return $this->model->where('status',1)->get();
     }
     
 

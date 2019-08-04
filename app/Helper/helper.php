@@ -54,5 +54,11 @@ function summaryTitle($str,$limit)
 }
 function formatTimeDate($time)
 {
-    return \Carbon\Carbon::parse($time)->format("H:i:s , l d/m/Y");
+    return \Carbon\Carbon::parse($time)->format("H:i:s , l d-m-Y");
+}
+function dateTime($time){
+    return \Carbon\Carbon::parse($time)->format("H:i:s , d-m-Y");
+}
+function formatDate($time){
+    return \Carbon\Carbon::parse($time)->format('d-m-Y');
 }

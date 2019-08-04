@@ -1,16 +1,36 @@
 @extends('frontend.layouts.master')
+@section('style')
+<style type="text/css" media="screen">
+    .weather{
+        font-size: 12px;
+    }
+    .weather img{
+        width: 30%;
+    }
+    .date_weather{
+        line-height: 40px;
+    }
+    .weather-box{
+        border: 1px #ccc solid;
+    }
+</style>
+@stop
 @section('content')
 <!-- banner-bottom -->
+
     <div class="banner-bottom">
         <div class="container">
+            <div style="border:0.5px red solid;width: 97.5%;margin-left: .8em;margin-bottom: 10px">
+                google ads
+            </div>
             <div class="move-text">
                 <div class="breaking_news">
                     <h2>Tin Mới Nhất</h2>
                 </div>
                 <div class="marquee">
-                    <div class="marquee1"><a class="breaking" href="single.html">A 5-year-old boy who recently returned to the U.S from Ebola-stricken West Africa is under observation after experiencing a fever.</a></div>
-                    <div class="marquee2"><a class="breaking" href="single.html">The surprisingly successful president of the Philippines and peacemaking in the Philippines: Shaking it all up.</a></div>
-                    <div class="clearfix"></div>
+                    @foreach($news_list as $news)
+                        <div class="marquee1"><a class="breaking" href="{{$news->href}}">{{$news->title}}</a></div>
+                    @endforeach
                 </div>
                 <div class="clearfix"></div>
                 <script type="text/javascript" src="js/jquery.marquee.js"></script>
@@ -23,16 +43,13 @@
                 <div class="video-grids">
                     <div class="col-md-8 video-grids-left">
                         <div class="video-grids-left1">
-                            <img src="images/9.jpg" alt=" " class="img-responsive" />
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
-                                    <span> </span>
-                            </a>
+                            <img src="{{$news_hot->image}}" alt=" " class="img-responsive" />
                             <div class="video-grid-pos">
-                                <h3><span>Bellevue</span>  Towers in Dubai Downtown UAE</h3>
+                                <h3>{{$news_hot->title}}</h3>
                                 <ul>
                                     <li>9:32 <label>|</label></li>
-                                    <li><i>Adom Smith</i> <label>|</label></li>
-                                    <li><span>Blogger</span></li>
+                                    <li><i>{{$news_hot->cate->cate_news_name}}</i> <label>|</label></li>
+                                    <li><span>{{timeToString($news_hot->updated_at)}}</span></li>
                                 </ul>
                             </div>
 
@@ -64,52 +81,29 @@
                         </div>
                         <div class="video-grids-left2">
                             <div class="course_demo1">
-                                <ul id="flexiselDemo1"> 
-                                    <li>
-                                        <div class="item">
-                                            <img src="images/10.jpg" alt=" " class="img-responsive" />
-                                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
-                                                    <i> </i>
-                                            </a>
-                                            <div id="small-dialog" class="mfp-hide">
-                                                <iframe src="" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                <ul id="flexiselDemo1">
+                                    @foreach($news_list as $key => $news)
+                                        <li>
+                                            <div class="item">
+                                                <img src="{{$news->image}}" alt=" " class="img-responsive" />
+                                                
+                                                <div id="small-dialog" class="mfp-hide">
+                                                    <iframe src="" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                </div>
+                                                <div class="floods-text">
+                                                    <h3>{{$news->title}}<span>{{$news->cate->cate_news_name}}<label>|</label> <i>{{timeToString($news->updated_at)}}</i></span></h3>
+                                                </div>
                                             </div>
-                                            <div class="floods-text">
-                                                <h3>The fed and inequality <span>Blogger <label>|</label> <i>Adom Smith</i></span></h3>
-                                                <p>5:56</p>
+                                        </li>
+                                        @if($key ==3 || $key == 6 || $key == 9)
+                                        <li>
+                                            <div class="item" style="border:.5px solid red;margin: .5em .3em">
+                                                    google ads
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item">
-                                            <img src="images/11.jpg" alt=" " class="img-responsive" />
-                                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
-                                                    <i> </i>
-                                            </a>
-                                            <div id="small-dialog" class="mfp-hide">
-                                                <iframe src="" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                            </div>
-                                            <div class="floods-text">
-                                                <h3>The fastest insect in the world <span>Blogger <label>|</label> <i>Adom Smith</i></span></h3>
-                                                <p>5:56</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item">
-                                            <img src="images/12.jpg" alt=" " class="img-responsive" />
-                                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
-                                                    <i> </i>
-                                            </a>
-                                            <div id="small-dialog" class="mfp-hide">
-                                                <iframe src="" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                            </div>
-                                            <div class="floods-text">
-                                                <h3>Billionaires versus Millionaires<span>Blogger <label>|</label> <i>Adom Smith</i></span></h3>
-                                                <p>5:56</p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                        @endif
+                                    @endforeach
+                                    
                                 </ul>
                             </div>
                                             <!-- pop-up-box -->
@@ -137,7 +131,7 @@
                                         <script type="text/javascript">
                              $(window).load(function() {
                                 $("#flexiselDemo1").flexisel({
-                                    visibleItems: 3,
+                                    visibleItems: 4,
                                     animationSpeed: 1000,
                                     autoPlay: true,
                                     autoPlaySpeed: 3000,            
@@ -174,71 +168,27 @@
                                 </ul>                    
                                 <div class="resp-tabs-container">
                                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                                        <div class="facts">
-                                            <div class="tab_list">
-                                                <img src="images/10.jpg" alt=" " class="img-responsive" />
+                                        @foreach($news_most_read as $key => $news)
+                                            <div class="facts">
+                                                <div class="tab_list">
+                                                    <img src="{{$news->image}}" alt=" " class="img-responsive" />
+                                                </div>
+                                                <div class="tab_list1">
+                                                    <ul>
+                                                        <li><a href="#">{{$news->cate->cate_news_name}}</a> <label>|</label></li>
+                                                        <li>{{timeToString($news->updated_at)}}</li>
+                                                    </ul>
+                                                    <p><a href="{{$news->href}}">{{$news->title}}</a></p>
+                                                </div>
+                                                <div class="clearfix"> </div>
                                             </div>
-                                            <div class="tab_list1">
-                                                <ul>
-                                                    <li><a href="#">Blogger</a> <label>|</label></li>
-                                                    <li>30.03.2016</li>
-                                                </ul>
-                                                <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                            @if($key == 2 || $key == 4)
+                                            <div class="facts" style="height: 98.25px">
+                                                goolge ads
+                                                <div class="clearfix"> </div>
                                             </div>
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                        <div class="facts">
-                                            <div class="tab_list">
-                                                <img src="images/11.jpg" alt=" " class="img-responsive" />
-                                            </div>
-                                            <div class="tab_list1">
-                                                <ul>
-                                                    <li><a href="#" class="green">international</a> <label>|</label></li>
-                                                    <li>30.03.2016</li>
-                                                </ul>
-                                                <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-                                            </div>
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                        <div class="facts">
-                                            <div class="tab_list">
-                                                <img src="images/12.jpg" alt=" " class="img-responsive" />
-                                            </div>
-                                            <div class="tab_list1">
-                                                <ul>
-                                                    <li><a href="#" class="orange">general</a> <label>|</label></li>
-                                                    <li>30.03.2016</li>
-                                                </ul>
-                                                <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-                                            </div>
-                                          <div class="clearfix"> </div>
-                                        </div>
-                                        <div class="facts">
-                                            <div class="tab_list">
-                                                <img src="images/10.jpg" alt=" " class="img-responsive" />
-                                            </div>
-                                            <div class="tab_list1">
-                                                <ul>
-                                                    <li><a href="#" class="orange1">business</a> <label>|</label></li>
-                                                    <li>30.03.2016</li>
-                                                </ul>
-                                                <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-                                            </div>
-                                          <div class="clearfix"> </div>
-                                        </div>
-                                        <div class="facts">
-                                            <div class="tab_list">
-                                                <img src="images/12.jpg" alt=" " class="img-responsive" />
-                                            </div>
-                                            <div class="tab_list1">
-                                                <ul>
-                                                    <li><a href="#" class="orange2">world</a> <label>|</label></li>
-                                                    <li>30.03.2016</li>
-                                                </ul>
-                                                <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-                                            </div>
-                                          <div class="clearfix"> </div>
-                                        </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
                                         <div class="facts">
@@ -324,39 +274,48 @@
                     <div class="clearfix"> </div>
                 </div>
             <!-- //video-grids -->
+            {{-- rating car --}}
+           
+            {{-- end rating --}}
             
             <!-- news-and-events -->
                 <div class="news">
                     <div class="news-grids">
                         <div class="col-md-8 news-grid-left">
                             <h3>Loại xe</h3>
-                            <div class="row list-cate">
-                            	<div class="col-md-4 text-center">
-                            		<a href="" title=""><img src="{{asset('images/car_png1.jpg')}}" alt=""></a>
-                            		<a href="" title=""><h4>Taxi</h4></a>
-                            	</div>
-                            	<div class="col-md-4 text-center">
-                            		<a href="" title=""><img src="{{asset('images/truck_png1.png')}}" alt=""></a>
-                            		<a href="" title=""><h4>Xe Tải</h4></a>
-                            	</div>
-                            	<div class="col-md-4 text-center">
-                            		<a href="" title=""><img src="{{asset('images/bus_png1.png')}}" alt=""></a>
-                            		<a href="" title=""><h4>Xe Khách</h4></a>
-                            	</div>
+                            <div class="list-cate">
+                                <div class="col-md-4 col-4 text-center">
+                                    <a href="" title=""><img src="{{asset('images/car_png1.jpg')}}" alt=""></a>
+                                    <a href="" title=""><h4>Taxi</h4></a>
+                                </div>
+                                <div class="col-md-4 col-4 text-center">
+                                    <a href="" title=""><img src="{{asset('images/truck_png1.png')}}" alt=""></a>
+                                    <a href="" title=""><h4>Xe Tải</h4></a>
+                                </div>
+                                <div class="col-md-4 col-4 text-center">
+                                    <a href="" title=""><img src="{{asset('images/bus_png1.png')}}" alt=""></a>
+                                    <a href="" title=""><h4>Xe Khách</h4></a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4 news-grid-right">
                             <div class="news-grid-rght1">
                             <!-- Nav tabs -->
                               <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a class="high" href="#home" aria-controls="home" role="tab" data-toggle="tab">Thời Tiết Khu Vực</a></li>
-                                <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Nghĩa Hưng</a></li>
+                                <li role="presentation" class="active"><a class="high" href="#home" aria-controls="home" role="tab" data-toggle="tab">Thời Tiết</a></li>
+                                <li role="presentation"></li>
                               </ul>
 
                               <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active london" id="home">
-                                        <ul>
+                                    <div role="tabpanel" class="col-md-12 tab-pane active london weather-box" id="home">
+                                        <div class="col-md-6 date_weather">
+                                            {!!$weather->date_time!!}
+                                        </div>
+                                        <div class="col-md-6 weather">
+                                            {!!$weather->weather_detail!!}
+                                        </div>
+                                       {{--  <ul>
                                             <li>
                                                 <h4>Wednesday</h4>
                                                 <span></span>
@@ -373,7 +332,7 @@
                                                 <p>31<sup>°</sup></p>
                                             </li>
                                             <div class="clearfix"> </div>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="profile">
                                         <iframe src="" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -385,7 +344,11 @@
                     </div>
                 </div>
             <!-- //news-and-events -->
+            <div class="col-md-12 text-center"  style="height: 100px;width: 97.5%;border: .5px red solid;margin-left: .8em">
+                google ads
+            </div>
         </div>
     </div>
+    
 <!-- //banner-bottom -->
 @endsection

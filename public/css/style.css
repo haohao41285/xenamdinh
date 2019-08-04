@@ -1,3 +1,4 @@
+
 /*private*/
 .eye-password{
   float: right;
@@ -467,7 +468,7 @@ input[type="radio"] {
   border-radius: 3px;
 }
 .list-cate{
-  margin: 1em;
+  margin-top: 1em;
   background-color: #f8f8f8;
 }
 .list-cate div{
@@ -558,7 +559,7 @@ input[type="radio"] {
 @media (min-width: 992px){
     .search-sec{
         position: relative;
-        top: -114px;
+        bottom: 100px;
         background: rgba(26, 70, 104, 0.51);
     }
 }
@@ -606,7 +607,7 @@ input[type="radio"] {
 
 html, body{
     font-size: 100%;
-	background:	#fff;/*
+	background:	#f0f0f0;/*
 	font-family: 'Oswald', sans-serif;*/
 }
 p{
@@ -1308,7 +1309,7 @@ a.breaking {
 }
 /*-- video-grids --*/
 .video-grids{
-	margin:3em 0;
+	margin:1em 0;
 }
 .play-icon span{
 		background: url(../images/img-sp.png) no-repeat -1px -80px;
@@ -1399,7 +1400,7 @@ position:relative;
     line-height: 0px;
 }
 .item{
-	padding:2.1em 2em;
+	padding:.5em .3em;
     border-right: 1px solid #DFDFDF;
 }
 .nbs-flexisel-item > img {
@@ -1417,12 +1418,12 @@ position:relative;
 .nbs-flexisel-nav-left {
 	left: 0%;
     top: 33% !important;
-    background:#111 url(../images/leftw.png) no-repeat 6px 28px;
+    /*background:#111 url(../images/leftw.png) no-repeat 6px 28px;*/
 }
 .nbs-flexisel-nav-right {
   right: 0%;
   top: 33% !important;
-  background:#111 url(../images/rightw.png) no-repeat 8px 28px;
+  /*background:#111 url(../images/rightw.png) no-repeat 8px 28px;*/
 }
 /*--//flexisel--*/
 .play-icon i {
@@ -1436,7 +1437,6 @@ position:relative;
 .item img,.tab_list img,.news-grid-left1 img{
     padding: .15em;
     background: #fff;
-    border:1px dotted #919191;
 }
 .floods-text{
 	margin:0.5em 0 0;
@@ -1474,7 +1474,7 @@ position:relative;
 	position:relative;
 }
 .facts {
-	padding:1.755em;
+	padding: .2em;
 	border-bottom:1px solid #DFDFDF;
 }
 .top1{
@@ -1493,7 +1493,6 @@ div#horizontalTab {
 	color: #fff;
 	font-size: 1em;
 	cursor: pointer;
-	padding:10px 46px;
 	display: inline-block;
 	margin: 0;
 	list-style: none;
@@ -1606,7 +1605,7 @@ ul.tab_list{
 	padding:0 .5em;
 }
 .tab_list1 p {
-    font-size: 1em;
+    font-size: .8em;
     color: #000;
     margin: 0.5em 0 0;
 }
@@ -1775,7 +1774,7 @@ ul.list6 li a:hover,.res6 a{
 /*-- //video-bottom-grids --*/
 /*-- news-and-events --*/
 .news{
-	margin:3em 0;
+	margin:1em 0;
 }
 .news-grid-left h3{
 	font-size: 1.1em;
@@ -3003,6 +3002,28 @@ h2.typoh2{
 	}
 }
 @media (max-width:480px){
+  .search-sec{
+    padding: 0;
+  }
+  .search-slt{
+    height: 2rem!important;
+  }
+  .move-text{
+    width: 100%!important;
+    margin-left: 0px!important;
+  }
+  .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+  .container {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
 	.table h1 {
 		font-size: 26px;
 	}
@@ -3589,6 +3610,9 @@ img.mobile1 {
 		width: 97.5%;
 		margin-left:.8em;
 	}
+  .banner-bottom {
+    margin-bottom: 20px; 
+  }
 }
 @media (max-width:1280px){
 	.callbacks_nav {
@@ -3628,6 +3652,7 @@ img.mobile1 {
 	}
 	.banner-bottom {
 		padding: 3em 0 0;
+    margin-bottom: 20px; 
 	}
 	.health ul li {
 		font-size: 13px;
@@ -3657,7 +3682,7 @@ img.mobile1 {
 		padding: 10px 29px;
 	}
 	.facts {
-		padding: 1.2em;
+		padding: .2em;
 	}
 	.news-grid-right1 {
 		margin: 0;
@@ -4307,7 +4332,7 @@ img.mobile1 {
 		font-size: 14px;
 	}
 	.tab_list1 {
-		margin: 0.5em 0 0;
+		margin:0;
 	}
 	.tab_list1 p {
 		font-size: 14px;
@@ -4499,7 +4524,8 @@ img.mobile1 {
 		height:60px;
 	}
 	.banner, .banner-info {
-		min-height: 375px;
+		min-height: 10px;
+    max-height: 100px;
 	}
 	.banner-bottom-grid-left {
 		float: none;

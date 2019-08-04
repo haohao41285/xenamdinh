@@ -20,10 +20,16 @@ Route::group(['prefix'=>'admin/'],function(){
 
 		//NEWS
 		Route::group(['prefix'=>'news'],function(){
-			Route::get('/','NewsController@viewNews');
+			Route::get('/','NewsController@viewNews')->name('news-index');
 			Route::get('/edit',function(){
 				return view('admin.news.news-edit');
 			});
+			Route::get('/add','NewsController@newsAdd');
+			Route::get('news-get-data','NewsController@newsGetData')->name('news-get-data');
+			Route::get('save-source','NewsController@saveSource')->name('save-source');
+			Route::get('save-news','NewsController@saveNews')->name('save-news');
+			Route::get('news-get-database','NewsController@getNewsDatabase')->name('news-get-database');
+			Route::post('/delete','NewsController@delete')->name('admin.news.delete');
 	    });
 		//TRANSPORT
 		Route::get('/result/address','TransportController@addressResult')->name('admin.address');

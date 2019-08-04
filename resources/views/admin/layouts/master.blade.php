@@ -412,4 +412,11 @@
 @endif
 @yield('script')
 <script src="{{asset('assets/js/function.js')}}" type="text/javascript"></script>
+<script>
+  $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+</script>
 </html>

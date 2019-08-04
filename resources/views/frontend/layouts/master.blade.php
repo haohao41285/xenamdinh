@@ -21,9 +21,9 @@
 </head>
 
 <body>
-	@php
+	{{-- @php
 	echo \Auth::guard('customer')->user()->email;
-	@endphp
+	@endphp --}}
 
 @include('frontend.layouts.partials.login')
 @include('frontend.layouts.partials.register')
@@ -31,9 +31,7 @@
 @include('frontend.layouts.partials.search')
 {{-- @include('frontend.layouts.partials.information') --}}
 @include('frontend.layouts.partials.test-login')
-
-  
-@yield('content')
+	@yield('content')
 
 @include('frontend.layouts.partials.footer')
 <!-- for bootstrap working -->

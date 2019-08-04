@@ -2,22 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Model;
+// use App\Models\BaseModel;
 
-class CateVehicle extends BaseModel
+class CateVehicle extends Model
 {
     protected $table = "cate_vehicles";
 
     protected $fillable = [
-    	'cate_vehicle_name',
-    	'cate_vehicle_slug',
+    	'cate_transport_name',
+    	'cate_transport_slug',
     	'created_by',
     	'updated_by',
-    	'cate_vehicle_active'
+    	'cate_transport_active'
     ];
     public $timestamps = true;
 
-    public static function boot(){
-    	parent::boot();
-    }
+    // public static function boot(){
+    // 	parent::boot();
+    // }
 }

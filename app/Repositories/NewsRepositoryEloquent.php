@@ -7,7 +7,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\NewsRepository;
 use App\Models\News;
 use App\Validators\NewsValidator;
-use HTMLDomParser;
+//use HTMLDomParser;
 
 /**
  * Class NewsRepositoryEloquent.
@@ -51,5 +51,52 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
     {
         $model = $this->model->select('first_news')->latest()->first();
         return $model;
+    }
+    public function delete($id){
+
+        $this->model->where('id',$id)->update(['status'=>0]);
+    }
+    public function datatable($input){
+        
+        $news_list = $this->model->select('*');
+
+        if($input['status'] != "")
+
+            $news_list = $news_list->where('status',$input['status']);
+
+        if($input['status'] == "")
+
+            $news_list = $news_list->where('status',1);
+
+        if($input['news_cate'] != "")
+
+            $news_list = $news_list->where('news_cate',$input['news_cate']);
+
+        return $news_list;
+    }
+
+    //FRONTEND
+    public function getLatestNews($amount = 10){
+        $news_list = $this->model->select('id','title','href','image','updated_at','news_cate')
+                                 ->where('status',1)
+                                 ->latest()
+                                 ->paginate($amount);
+        return $news_list;
+    }
+    public function getMostRead($news_cate = 1,$amount = 5){
+        $news_most_read = $this->model->select('id','title','href','image','updated_at','news_cate')
+                                    ->where('status',1)
+                                    ->orderBy('turn_read','desc')
+                                    ->where('news_cate',$news_cate)
+                                    ->paginate($amount);
+        return $news_most_read;
+    }
+    public function newsHot(){
+        $news_hot = $this->model->select('id','title','href','image','updated_at','news_cate')
+                            ->where('status',1)
+                            ->where('news_hot',1)
+                            ->latest()
+                            ->first();
+        return $news_hot;
     }
 }
