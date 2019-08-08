@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
          //$this->call(PageSeeder::class);
-        //$this->call(MenuSeeder::class);
+        $this->call(MenuSeeder::class);
     	//$this->call(MenuItemSeeder::class);
         //$this->call(XeKhachSeeder::class);
         //$this->call(TaxiSeeder::class);
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(TuyenDungSeeder::class);
         //$this->call(NewsPathSeeder::class);
         //$this->call(CustomerSeeder::class);
-        $this->call(UserSeeder::class);
+        // $this->call(UserSeeder::class);
 
          DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 

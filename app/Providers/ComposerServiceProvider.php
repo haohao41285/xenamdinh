@@ -3,6 +3,7 @@
 namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Tuyen;
+use App\Models\Menu;
 class ComposerServiceProvider extends ServiceProvider
 {
     /**
@@ -35,6 +36,13 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer('admin.*', function($view) {
           $composer_user =\Auth::user()?\Auth::user():null;
              $view->with('composer_user',$composer_user);
+        });
+        //MENU
+        view()->composer('*',function($view)
+        {
+            $menu_list = Menu::where('status',1)->get();
+            $composer_menu = collect($menu_list);
+            $view->with('composer_menu',$composer_menu);
         });
     }
     /**

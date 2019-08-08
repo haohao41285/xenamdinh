@@ -1,5 +1,16 @@
-
+/*multi image*/
 /*private*/
+.news-grid-left img{
+  width: 100%;
+  padding: 3px;
+}
+.list-car-feauture div{
+  line-height: 50px;
+}
+.list-car-feauture{
+  background-color: #f8f8f8;
+  margin: 1em 0px;
+}
 .eye-password{
   float: right;
   color: blue;
@@ -467,7 +478,7 @@ input[type="radio"] {
   padding: 1px;
   border-radius: 3px;
 }
-.list-cate{
+/*.list-cate{
   margin-top: 1em;
   background-color: #f8f8f8;
 }
@@ -489,7 +500,7 @@ input[type="radio"] {
   color: #000;
   font-weight: 400;
   margin: 1em;
-}
+}*/
 .btn-grey{
     background-color:#D8D8D8;
   color:#FFF;

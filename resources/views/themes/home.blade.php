@@ -17,12 +17,72 @@
 @stop
 @section('content')
 <!-- banner-bottom -->
-
     <div class="banner-bottom">
         <div class="container">
             <div style="border:0.5px red solid;width: 97.5%;margin-left: .8em;margin-bottom: 10px">
                 google ads
             </div>
+                <div class="news">
+                    <div class="news-grids">
+                        <div class="col-md-8 news-grid-left">
+                            <h3>Xe được yêu thích nhất</h3>
+                            <div class="row list-car-feauture" >
+                                <div class="col-md-4">
+                                    <img src="http://i.imgur.com/sDLIAZD.png" alt="">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="http://i.imgur.com/sDLIAZD.png" alt="">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="http://i.imgur.com/sDLIAZD.png" alt="">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="http://i.imgur.com/sDLIAZD.png" alt="">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="http://i.imgur.com/sDLIAZD.png" alt="">
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <img src="http://i.imgur.com/sDLIAZD.png" alt="" style="opacity: .4">
+                                    <h5 style="position: absolute;top: 35%;right: 40%;font-size: 3em"><b>+4</b></h5>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-4 news-grid-right">
+                            <div class="news-grid-rght1">
+                            <!-- Nav tabs -->
+                              <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a class="high" href="#home" aria-controls="home" role="tab" data-toggle="tab">Thời Tiết</a></li>
+                                <li role="">
+                                    <select name="" class="form-control">
+                                        <option value="">Nam Định</option>
+                                        <option value="">Hà Nội</option>
+                                        <option value="">Tp.Hồ Chí Minh</option>
+                                    </select>
+                                </li>
+                              </ul>
+
+                              <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="col-md-12 tab-pane active london weather-box" id="home">
+                                        <div class="col-md-6 date_weather">
+                                            {!!$weather->date_time!!}
+                                        </div>
+                                        <div class="col-md-6 weather">
+                                            {!!$weather->weather_detail!!}
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="profile">
+                                        <iframe src="" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            <!-- //news-and-events -->
             <div class="move-text">
                 <div class="breaking_news">
                     <h2>Tin Mới Nhất</h2>
@@ -274,76 +334,6 @@
                     <div class="clearfix"> </div>
                 </div>
             <!-- //video-grids -->
-            {{-- rating car --}}
-           
-            {{-- end rating --}}
-            
-            <!-- news-and-events -->
-                <div class="news">
-                    <div class="news-grids">
-                        <div class="col-md-8 news-grid-left">
-                            <h3>Loại xe</h3>
-                            <div class="list-cate">
-                                <div class="col-md-4 col-4 text-center">
-                                    <a href="" title=""><img src="{{asset('images/car_png1.jpg')}}" alt=""></a>
-                                    <a href="" title=""><h4>Taxi</h4></a>
-                                </div>
-                                <div class="col-md-4 col-4 text-center">
-                                    <a href="" title=""><img src="{{asset('images/truck_png1.png')}}" alt=""></a>
-                                    <a href="" title=""><h4>Xe Tải</h4></a>
-                                </div>
-                                <div class="col-md-4 col-4 text-center">
-                                    <a href="" title=""><img src="{{asset('images/bus_png1.png')}}" alt=""></a>
-                                    <a href="" title=""><h4>Xe Khách</h4></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 news-grid-right">
-                            <div class="news-grid-rght1">
-                            <!-- Nav tabs -->
-                              <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a class="high" href="#home" aria-controls="home" role="tab" data-toggle="tab">Thời Tiết</a></li>
-                                <li role="presentation"></li>
-                              </ul>
-
-                              <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="col-md-12 tab-pane active london weather-box" id="home">
-                                        <div class="col-md-6 date_weather">
-                                            {!!$weather->date_time!!}
-                                        </div>
-                                        <div class="col-md-6 weather">
-                                            {!!$weather->weather_detail!!}
-                                        </div>
-                                       {{--  <ul>
-                                            <li>
-                                                <h4>Wednesday</h4>
-                                                <span></span>
-                                                <p>21<sup>°</sup></p>
-                                            </li>
-                                            <li>
-                                                <h4>Thursday</h4>
-                                                <span class="moon"></span>
-                                                <p>25<sup>°</sup></p>
-                                            </li>
-                                            <li>
-                                                <h4>Friday</h4>
-                                                <span class="sun"></span>
-                                                <p>31<sup>°</sup></p>
-                                            </li>
-                                            <div class="clearfix"> </div>
-                                        </ul> --}}
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="profile">
-                                        <iframe src="" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-            <!-- //news-and-events -->
             <div class="col-md-12 text-center"  style="height: 100px;width: 97.5%;border: .5px red solid;margin-left: .8em">
                 google ads
             </div>
@@ -351,4 +341,7 @@
     </div>
     
 <!-- //banner-bottom -->
-@endsection
+@stop
+@section('script')
+<script></script>
+@stop

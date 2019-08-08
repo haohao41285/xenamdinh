@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\NewsRepository;
 use App\Traits\WebscraperTrait;
 use App\Models\Weather;
+use App\Models\Menu;
 
 
 class PageController extends Controller
@@ -39,10 +40,26 @@ class PageController extends Controller
 		// ];
 		// Weather::create($arr_weather);
 		//END GET WEATHER
+		//GET MENU
+
+     //    $menu_list = Menu::where('status',1)->get();
+	    // $data = collect($menu_list);
+	    // $menu_arr = [];
+     //    return self::getMenu($menu_arr,$data);
+
 		$weather = Weather::first();
 		$news_list = $this->news->getLatestNews();
 		$news_most_read = $this->news->getMostRead();
 		$news_hot = $this->news->newsHot();
 		return view('themes.home',compact('news_most_read','news_list','news_hot','weather'));
 	}
+	// public static function getMenu($menu_arr,$data,$parent_id = 0,$text = ''){
+	//     foreach($data as $key => $menu){
+	//         if($menu->parent_id == $parent_id){
+	//             $menu_arr[] = $menu->title.$text;
+	//             self::getMenu($menu_arr,$data,$menu->id,$text .'--');
+	//         }
+	//     }
+	//     return $menu_arr;
+	// }
 }
